@@ -57,7 +57,7 @@ $ (sin x)/x = c (x-pi)(x+pi)(x-2pi)(x+2pi)(x-3pi)(x+3pi) #sym.dots.h.c $
 $ (sin x)/x = c (x^2 - pi^2)(x^2 - 4pi^2)(x^2 - 9pi^2 ) #sym.dots.h.c wide "Difference of squares" $ <eq:diff_of_squares>
 
 The next step is to determine the value of the constant $c$.\
-Now $(sin x)/x$ is undefined at $x=0$, but we can take the limit of both sides as x goes to zero.
+Now, $(sin x)/x$ is undefined at $x=0$, but we can take the limit of both sides as x goes to zero.
 
 $ lim_(x->0) (sin x)/x = lim_(x->0) c (x^2 - pi^2)(x^2 - 4pi^2)(x^2 - 9pi^2 ) #sym.dots.h.c $
 
@@ -74,5 +74,12 @@ Pairing each factor of $c$ with its matching difference of squares factor from @
 
 $ (sin x)/x = (1 / (- pi^2))(x^2 - pi^2) (1 / (- 4pi^2))(x^2 - 4pi^2) (1 / (- 9pi^2))(x^2 - 9pi^2 ) #sym.dots.h.c $
 $ (sin x)/x = (1-x^2/(pi^2)) (1-x^2/(4pi^2)) (1-x^2/(9pi^2)) #sym.dots.h.c $
+
+We should note at this point that the last equation is essentially equivalent to Weierstrass's factorization of $sin x$.
+
+$ sin x = x product_(n=1)^oo [1-x^2/(n^2 pi^2)] wide "Weierstrass factorization" $
+
+Indeed, we could have used Weierstrass as the starting point. However, since we are following Euler's development of the argument,
+we chose to begin with the Maclaurin series.
 
 If we begin FOILing the infinite product on the right-hand side from left to right we get.
