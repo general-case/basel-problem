@@ -104,17 +104,21 @@ x^6/pi^6(1/36 + 1/49 + 1/64 + #sym.dots.h.c) +
 #sym.dots.h.c
 $
 
-Rewriting this in sigma notation we get:
+The coefficient of the $x^2/pi^2$ term is exactly the sum we're aiming to compute, so we'll rewrite it using sigma notation.
+The coefficients of the $x^4/pi^2$ and $x^6/pi^2$ terms are more complicated, involving double and triple sums respectively,
+and since we won't need those coefficients, we'll rewrite them simply as $C_4$ and $C_6$ respectively.
+
+#pagebreak()
+
+Rewriting the expression as outlined we get:
 
 $
 1 -
 x^2/pi^2 sum_(n=1)^oo 1/n^2 +
-x^4/pi^4 sum_(n=2)^oo 1/n^2 -
-x^6/pi^6 sum_(n=6)^oo 1/n^2 +
+x^4/pi^4 C_4 -
+x^6/pi^6 C_6 +
 #sym.dots.h.c
 $
-
-#pagebreak()
 
 This sum is equal to $(sin x)/x$, so we have:
 
@@ -122,28 +126,20 @@ $
 (sin x)/x =
 1 -
 x^2/pi^2 sum_(n=1)^oo 1/n^2 +
-x^4/pi^4 sum_(n=2)^oo 1/n^2 -
-x^6/pi^6 sum_(n=6)^oo 1/n^2 +
+x^4/pi^4 C_4 -
+x^6/pi^6 C_6 +
 #sym.dots.h.c
 $
 <eq:sum_of_sums>
 
-Notice that the coefficient of the $x^2/pi^2$ term is exactly the sum we are aiming to determine the value of.
 Recalling the Maclaurin series for sin from @eq:maclaurin_series_for_sin and dividing both sides by $x$ we get:
 
 $ (sin x)/x = 1 - x^2/3! + x^4/5! - x^6/7! + #sym.dots.h.c $ <eq:maclaurin_series_for_sin_over_x>
 
-If we equate the $x^2$ terms from @eq:sum_of_sums and @eq:maclaurin_series_for_sin_over_x we get:
+Equating the $x^2$ terms from @eq:sum_of_sums and @eq:maclaurin_series_for_sin_over_x we get:
 
 $ -x^2/pi^2 sum_(n=1)^oo 1/n^2 = -x^2/3! $
 $ sum_(n=1)^oo 1/n^2 = -x^2/3!(-pi^2/x^2) $
 $ sum_(n=1)^oo 1/n^2 = pi^2/6 $
 
 This concludes the proof.
-However, it is an interesting observation that we could have equated other like terms since they contain the tails of the sum we are looking for.
-
-$ x^4/pi^4 sum_(n=2)^oo 1/n^2 = x^4/5! $
-$ sum_(n=2)^oo 1/n^2 =  x^4/5!(pi^4/x^4) $
-$ sum_(n=2)^oo 1/n^2 =  pi^4/5! $
-$ sum_(n=1)^oo 1/n^2 =  pi^4/5! + 1 $
-
