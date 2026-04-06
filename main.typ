@@ -1,4 +1,4 @@
-
+// Set document properties.
 #set page(paper: "us-letter")
 #set heading(numbering: "1.")
 #set math.equation(numbering: "(1)")
@@ -10,7 +10,14 @@
 // Contents if I need it later.
 // #outline()
 
-#align(horizon, heading(numbering: none)[Abstract])
+// #align(horizon, heading(numbering: none)[Abstract])
+
+// Style the abstract heading.
+#show <sec:abstract>: set heading(numbering: none)
+#show <sec:abstract>: set align(horizon)
+
+
+= Abstract <sec:abstract>
 This paper gives a very detailed account of Euler's proof of the statement posed in the Basel problem.
 
 #pagebreak()
