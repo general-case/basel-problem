@@ -111,19 +111,26 @@ x^6/pi^6(1/36 + 1/49 + 1/64 + #sym.dots.h.c) +
 #sym.dots.h.c
 $
 
-The coefficient of the $x^2/pi^2$ term is exactly the sum we're aiming to compute, so we'll rewrite it using sigma notation.
-The coefficients of the $x^4/pi^2$ and $x^6/pi^2$ terms are more complicated, involving double and triple sums respectively,
-and since we won't need those coefficients, we'll rewrite them simply as $C_4$ and $C_6$ respectively.
+We'll set $S_2, S_4, "and" S_6$ equal to the sums in the $x^2, x^4, "and" x^6$ terms respectively.\
+We'll set $C_2, C_4, "and" C_6$ equal to the coefficients of the $x^2, x^4, "and" x^6$ terms respectively,\
+such that $C_2 = 1/pi^2 S_2, C_4 = 1/pi^4 S_6, "and" C_6 =  1/pi^6 S_6$.
 
 #pagebreak()
 
-Rewriting the expression as outlined we get:
+The $S_2$ factor of the $C_2$ coefficient is the sum of reciprocal squares that we're aiming to compute.
+
+$ S_2 = sum_(n=1)^oo 1/n^2 $
+
+The $S_4$ and $S_6$ sums are more complicated, involving double and triple sums respectively,
+but since $S_2$ is the sum we're interested in, we won't need these.
+
+Rewriting the full expression using the coefficients $C_2, C_4, "and" C_6$ defined earlier, we have:
 
 $
 1 -
-x^2/pi^2 sum_(n=1)^oo 1/n^2 +
-x^4/pi^4 C_4 -
-x^6/pi^6 C_6 +
+x^2 C_2 +
+x^4 C_4 -
+x^6 C_6 +
 #sym.dots.h.c
 $
 
@@ -132,21 +139,24 @@ This sum is equal to $(sin x)/x$, so we have:
 $
 (sin x)/x =
 1 -
-x^2/pi^2 sum_(n=1)^oo 1/n^2 +
-x^4/pi^4 C_4 -
-x^6/pi^6 C_6 +
+x^2 C_2 +
+x^4 C_4 -
+x^6 C_6 +
 #sym.dots.h.c
-$
-<eq:sum_of_sums>
+$ <eq:sum_of_sums>
 
 Recalling the Maclaurin series for sin from @eq:maclaurin_series_for_sin and dividing both sides by $x$ we get:
 
 $ (sin x)/x = 1 - x^2/3! + x^4/5! - x^6/7! + #sym.dots.h.c $ <eq:maclaurin_series_for_sin_over_x>
 
-Equating the $x^2$ terms from @eq:sum_of_sums and @eq:maclaurin_series_for_sin_over_x we get:
+Equating the coefficients of the $x^2$ terms from @eq:sum_of_sums and @eq:maclaurin_series_for_sin_over_x we get:
 
-$ -x^2/pi^2 sum_(n=1)^oo 1/n^2 = -x^2/3! $
-$ sum_(n=1)^oo 1/n^2 = -x^2/3!(-pi^2/x^2) $
-$ sum_(n=1)^oo 1/n^2 = pi^2/6 $
+$ C_2 = 1/3! $
+
+Rewriting $C_2$ and $S_2$, we get:
+
+$ 1/pi^2 S_2 = 1/3! $
+$ 1/pi^2 sum_(n=1)^oo 1/n^2 = 1/3! $
+$ sum_(n=1)^oo 1/n^2 = pi^2/3! $
 
 This concludes the proof.
