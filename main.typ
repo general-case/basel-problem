@@ -24,15 +24,20 @@ This paper gives a very detailed account of Euler's proof of the statement posed
 
 = Introduction
 
-The Basel problem, posed by Italian mathematician Pietro Mengoli in his _Novae quadraturae arithmeticae_, published in 1650,
+The Basel problem, originally posed by Italian mathematician Pietro Mengoli in his _Novae quadraturae arithmeticae_, published in 1650,
 asks for the exact finite sum of the series of squared reciprocals of natural numbers:
 
 // Surrounding the expression with spaces causes it to be typeset in block mode.
 $ sum_(n=1)^oo 1/n^2 $
 
-In 1734, Euler showed that the series is equal to $pi^2/6$.
+In 1734, Euler in his paper _De summis serierum reciprocarum_, showed that the series is equal to $pi^2/6$.
 
-Why is this sum interesting?
+Why is this sum interesting? Well, the harmonic series $sum_(n=1)^oo 1/n$ diverges, but very slowly.
+All smaller series converge and all larger ones diverge, so the harmonic series can be viewed as the boundary between convergence and divergence.
+The sum in the Basel problem, i.e. the sum of reciprocal squares, is essentially an integer step smaller than the harmonic series.
+On it's face, sum of reciprocal squares would seem straightforward to compute, but as we have seen,
+the Basel problem remained unsolved for over eighty years.
+It stood as a long term challenge for mathematicians and is considered a _famous_ problem.
 
 #pagebreak()
 
@@ -160,3 +165,10 @@ $ 1/pi^2 sum_(n=1)^oo 1/n^2 = 1/3! $
 $ sum_(n=1)^oo 1/n^2 = pi^2/3! $
 
 This concludes the proof.
+
+= An alternative approach
+
+There are many proofs of the Basel theorem. Need a theorem package in typst.
+
+
+= Investigating the $X^4$ factors of the product
