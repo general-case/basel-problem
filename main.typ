@@ -4,6 +4,30 @@
 #set math.equation(numbering: "(1)")
 // #show math.equation.where(block: true): set align(left)
 
+// Notes
+/*
+Three core modes: markup, code initiated by #, and math initiated by $ $.
+
+If the math expression inside the $ $ delimiters is surrounded by spaces then the expression is typeset in display (block) mode.
+Otherwise, the expression is typeset in line mode.
+
+The @preview namespace on the import statement refers to the namespace for community contributed packages.
+
+Labels are enclosed in angle brackets, e.g. <sec:my_section>, and referenced using the @ notation, e.g. @sec:my_section.
+
+The show statement works like a CSS rule with a selector followed by styling.
+
+The let statement lets you assign a value to an arbitrary variable.
+
+*/
+
+// Imports
+#import "@preview/theorion:0.3.3":*
+
+// Apply the show-theorion function to the entire document.
+#show : show-theorion
+
+
 #let title = [An exceptionally detailed explanation of Euler's solution to the Basel problem]
 #align(center, text(18pt)[#title])
 
@@ -27,7 +51,6 @@ This paper gives a very detailed account of Euler's proof of the statement posed
 The Basel problem, originally posed by Italian mathematician Pietro Mengoli in his _Novae quadraturae arithmeticae_, published in 1650,
 asks for the exact finite sum of the series of squared reciprocals of natural numbers:
 
-// Surrounding the expression with spaces causes it to be typeset in block mode.
 $ sum_(n=1)^oo 1/n^2 $
 
 In 1734, Euler in his paper _De summis serierum reciprocarum_, showed that the series is equal to $pi^2/6$.
@@ -166,9 +189,18 @@ $ sum_(n=1)^oo 1/n^2 = pi^2/3! $
 
 This concludes the proof.
 
-= An alternative approach
-
-There are many proofs of the Basel theorem. Need a theorem package in typst.
-
-
 = Investigating the $X^4$ factors of the product
+
+It is instructive to consider the previous approach applied to the $X^4$ terms in order to prove the following theorem.
+
+// Need a theorem package: ctheorems, lemmify, or theorion.
+
+
+#theorem(title: "Pythagorean Theorem")[
+  In a right triangle, the square of the hypotenuse equals the sum of squares of the other two sides: 
+  $x^2 + y^2 = z^2$
+] <thm:pythagoras>
+
+= Conclusion
+
+We essentially equated the coefficients of specific terms from two different representations of the $(sin x)/x$ function.
