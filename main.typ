@@ -16,19 +16,23 @@ The @preview namespace on the import statement refers to the namespace for commu
 Labels are enclosed in angle brackets, e.g. <sec:my_section>, and referenced using the @ notation, e.g. @sec:my_section.
 
 The show statement works like a CSS rule with a selector followed by styling.
+The show keyword followed by a selector and style are called a show rule.
+A show rule with a blank selector applies the styling every element in the document from the point of invocation.
+When a function is used as a show rule style, it is applied to each matching element, in a manner analogous to the visitor pattern.
 
-The let statement lets you assign a value to an arbitrary variable.
+The let statement allows you to introduce a variable and assign a value to it or define a function.
+
+Content may be placed in square brackets following a function call. This construct is called a trailing content block.
 
 */
 
 // Imports
 #import "@preview/theorion:0.3.3":*
 
-// Apply the show-theorion function to the entire document.
+// Apply the show-theorion function to all elements in the document.
 #show : show-theorion
 
-
-#let title = [An exceptionally detailed explanation of Euler's solution to the Basel problem]
+#let title = [A detailed explanation of Euler's solution to the Basel problem]
 #align(center, text(18pt)[#title])
 
 // Contents if I need it later.
@@ -42,14 +46,14 @@ The let statement lets you assign a value to an arbitrary variable.
 
 
 = Abstract <sec:abstract>
-This paper gives a very detailed account of Euler's proof of the statement posed in the Basel problem.
+This paper gives a detailed account of Euler's proof of the statement posed in the Basel problem.
 
 #pagebreak()
 
 = Introduction
 
 The Basel problem, originally posed by Italian mathematician Pietro Mengoli in his _Novae quadraturae arithmeticae_, published in 1650,
-asks for the exact finite sum of the series of squared reciprocals of natural numbers:
+asks for the value of the sum of the reciprocals of the squares of the natural numbers:
 
 $ sum_(n=1)^oo 1/n^2 $
 
@@ -58,13 +62,17 @@ In 1734, Euler in his paper _De summis serierum reciprocarum_, showed that the s
 Why is this sum interesting? Well, the harmonic series $sum_(n=1)^oo 1/n$ diverges, but very slowly.
 All smaller series converge and all larger ones diverge, so the harmonic series can be viewed as the boundary between convergence and divergence.
 The sum in the Basel problem, i.e. the sum of reciprocal squares, is essentially an integer step smaller than the harmonic series.
-On it's face, sum of reciprocal squares would seem straightforward to compute, but as we have seen,
+On it's face, the sum of reciprocal squares seems straightforward to compute, but as we have seen,
 the Basel problem remained unsolved for over eighty years.
-It stood as a long term challenge for mathematicians and is considered a _famous_ problem.
+It stood as a long term challenge and it's solution is considered a significant result in number theory.
 
 #pagebreak()
 
 = Proof
+
+The theorem to be proven is:
+
+#theorem(title: "Basel Problem")[$ sum_(n=1)^oo 1/n^2 = pi^2/6 $]<thm:basel_problem>
 
 The $sin$ function can be formally defined analytically as a Maclaurin series:
 
@@ -189,17 +197,12 @@ $ sum_(n=1)^oo 1/n^2 = pi^2/3! $
 
 This concludes the proof.
 
-= Investigating the $X^4$ factors of the product
+= Using Euler's approach to prove a similar theorem
 
-It is instructive to consider the previous approach applied to the $X^4$ terms in order to prove the following theorem.
+It is instructive to consider the previous approach applied to the $X^4$ terms in order to prove the following theorem:
 
-// Need a theorem package: ctheorems, lemmify, or theorion.
+#theorem(title: "Something else")[$ sum_(m=1)^oo sum_(n=m+1)^oo 1/(m^2n^2) = pi^4/120 $]<thm:sum_of_product_of_squares>
 
-
-#theorem(title: "Pythagorean Theorem")[
-  In a right triangle, the square of the hypotenuse equals the sum of squares of the other two sides: 
-  $x^2 + y^2 = z^2$
-] <thm:pythagoras>
 
 = Conclusion
 
