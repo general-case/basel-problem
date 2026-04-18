@@ -1,7 +1,8 @@
 // Set document properties.
 #set page(paper: "us-letter")
 #set heading(numbering: "1.")
-#set math.equation(numbering: "(1)")
+#set math.equation(numbering: "(1)", supplement: [equation]) // Default reference is "equation".
+
 // #show math.equation.where(block: true): set align(left)
 
 // Notes
@@ -68,19 +69,21 @@ It stood as a long term challenge and it's solution is considered a significant 
 
 #pagebreak()
 
-= Proof
+= Euler's solution to the Basel problem
 
-The theorem to be proven is:
+Euler's solution to the Basel problem is the following theorem:
 
 #theorem(title: "Basel Problem")[$ sum_(n=1)^oo 1/n^2 = pi^2/6 $]<thm:basel_problem>
 
-The $sin$ function can be formally defined analytically as a Maclaurin series:
+== Proof
+
+The $sin$ function is defined analytically as a Maclaurin series:
 
 $ sin x = x - x^3/3! + x^5/5! - x^7/7! + #sym.dots.h.c $ <eq:maclaurin_series_for_sin>
 
 A polynomial function can be expressed as the product of a constant, a finite number of real linear factors, and a finite number of irreducible real quadratics.
-The irreducible real quadratics appear when the polynomial has one or more non-real complex roots.
-If the polynomial has all real roots, then it can be expressed as the product of a constant and a finite number real linear factors only. \
+The irreducible real quadratics appear only when the polynomial has one or more non-real complex roots.
+If the polynomial has all real roots, then it can be expressed solely as the product of a constant and a finite number real linear factors. \
 For example, the polynomial function $f(x) = 2x^2 - 14x + 24$, which has real roots 3 and 4, may be expressed as $f(x) = 2(x-3)(x-4)$.
 In the polynomial case, the constant is simply the leading coefficient, i.e. the coefficient of the highest degree term.
 In the case of a power series, since there are infinitely many terms, there is no highest degree term and thus no leading coefficient.
@@ -99,6 +102,8 @@ $ sin x = c x(x-pi)(x+pi)(x-2pi)(x+2pi)(x-3pi)(x+3pi) #sym.dots.h.c $
 $ (sin x)/x = c (x-pi)(x+pi)(x-2pi)(x+2pi)(x-3pi)(x+3pi) #sym.dots.h.c $
 $ (sin x)/x = c (x^2 - pi^2)(x^2 - 4pi^2)(x^2 - 9pi^2 ) #sym.dots.h.c wide "Difference of squares" $ <eq:diff_of_squares>
 
+#pagebreak()
+
 The next step is to determine the value of the constant $c$.\
 Now, $(sin x)/x$ is undefined at $x=0$, but we can take the limit of both sides as x goes to zero:
 
@@ -111,14 +116,12 @@ $ 1 = c (- pi^2)(- 4pi^2)(- 9pi^2) #sym.dots.h.c $
 $ c = 1 / ((- pi^2)(- 4pi^2)(- 9pi^2) #sym.dots.h.c) $
 $ c = (1 / (- pi^2)) (1 / (- 4pi^2)) (1 / (- 9pi^2)) #sym.dots.h.c $
 
-#pagebreak()
-
 Pairing each factor of $c$ with its matching difference of squares factor from @eq:diff_of_squares, we get:
 
 $ (sin x)/x = (1 / (- pi^2))(x^2 - pi^2) (1 / (- 4pi^2))(x^2 - 4pi^2) (1 / (- 9pi^2))(x^2 - 9pi^2 ) #sym.dots.h.c $
 $ (sin x)/x = (1-x^2/(pi^2)) (1-x^2/(4pi^2)) (1-x^2/(9pi^2)) #sym.dots.h.c $ <eq:weierstrass>
 
-As a brief aside, we should note that @eq:weierstrass is essentially equivalent to Weierstrass's factorization of $sin x$.
+As a brief aside, we should note that @eq:weierstrass is equivalent to Weierstrass's factorization of $sin x$.
 
 $ sin x = x product_(n=1)^oo [1-x^2/(n^2 pi^2)] wide "Weierstrass factorization" $
 
@@ -127,11 +130,13 @@ However, since we are following Euler's development of the argument, we chose to
 
 If we progressively FOIL a number of factors of the infinite product on the right-hand side of @eq:weierstrass from left to right we get:
 
-$ (1-x^2/(pi^2)) (1-x^2/(4pi^2)) (1-x^2/(9pi^2)) $
-$ (1-x^2/(pi^2) - x^2/(4pi^2) + x^4/(4pi^4)) (1-x^2/(9pi^2)) $
-$ (1-x^2/(pi^2) - x^2/(4pi^2) + x^4/(4pi^4) - x^2/(9pi^2) + x^4/(9pi^4) + x^4/(36pi^4) - x^6/(36pi^6)) $
+$ (1-x^2/(pi^2)) (1-x^2/(4pi^2)) (1-x^2/(9pi^2)) $<exp:foil_1>
+$ (1-x^2/(pi^2) - x^2/(4pi^2) + x^4/(4pi^4)) (1-x^2/(9pi^2)) $<exp:foil_2>
+$ (1-x^2/(pi^2) - x^2/(4pi^2) + x^4/(4pi^4) - x^2/(9pi^2) + x^4/(9pi^4) + x^4/(36pi^4) - x^6/(36pi^6)) $<exp:foil_3>
 
-We can regroup this expression so that the matching terms are adjacent.
+#pagebreak()
+
+We can regroup @exp:foil_3[expression] so that the matching terms are adjacent.
 
 $ 1-x^2/(pi^2) - x^2/(4pi^2) - x^2/(9pi^2) + x^4/(4pi^4) + x^4/(9pi^4) + x^4/(36pi^4) - x^6/(36pi^6) $
 $ 1 - (x^2/(pi^2) + x^2/(4pi^2) + x^2/(9pi^2)) + (x^4/(4pi^4) + x^4/(9pi^4) + x^4/(36pi^4)) - (x^6/(36pi^6)) $
@@ -143,15 +148,13 @@ $
 1 -
 x^2/pi^2(1/1 + 1/4 + 1/9 + #sym.dots.h.c) +
 x^4/pi^4(1/4 + 1/9 + 1/36 + #sym.dots.h.c) -
-x^6/pi^6(1/36 + 1/49 + 1/64 + #sym.dots.h.c) +
+x^6/pi^6(1/36 + #sym.dots.h.c) +
 #sym.dots.h.c
 $
 
 We'll set $S_2, S_4, "and" S_6$ equal to the sums in the $x^2, x^4, "and" x^6$ terms respectively.\
 We'll set $C_2, C_4, "and" C_6$ equal to the coefficients of the $x^2, x^4, "and" x^6$ terms respectively,\
 such that $C_2 = 1/pi^2 S_2, C_4 = 1/pi^4 S_6, "and" C_6 =  1/pi^6 S_6$.
-
-#pagebreak()
 
 The $S_2$ factor of the $C_2$ coefficient is the sum of reciprocal squares that we're aiming to compute.
 
