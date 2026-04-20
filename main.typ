@@ -73,7 +73,7 @@ It stood as a long term challenge and it's solution is considered a significant 
 
 Euler's solution to the Basel problem is the following theorem:
 
-#theorem(title: "Basel Problem")[$ sum_(n=1)^oo 1/n^2 = pi^2/6 $]<thm:basel_problem>
+#theorem(title: "Basel problem")[$ sum_(n=1)^oo 1/n^2 = pi^2/6 $]<thm:basel_problem>
 
 == Proof
 
@@ -192,6 +192,8 @@ Equating the coefficients of the $x^2$ terms from @eq:sum_of_sums and @eq:maclau
 
 $ C_2 = 1/3! $
 
+#pagebreak()
+
 Rewriting $C_2$ and $S_2$, we get:
 
 $ 1/pi^2 S_2 = 1/3! $
@@ -202,9 +204,15 @@ This concludes the proof.
 
 = Using Euler's approach to prove a similar theorem
 
-It is instructive to consider the previous approach applied to the $X^4$ terms in order to prove the following theorem:
+It is instructive to consider Euler's approach applied to the $x^4$ terms of the
+Maclaurin series and the Weierstrass factorization of the sine function
+in order to prove the following theorem:
 
-#theorem(title: "Something else")[$ sum_(m=1)^oo sum_(n=m+1)^oo 1/(m^2n^2) = pi^4/120 $]<thm:sum_of_product_of_squares>
+#theorem(title: "Basel variant")[$ sum_(m=1)^oo sum_(n=m+1)^oo 1/(m^2n^2) = pi^4/120 $]<thm:basel_variant>
+
+The proof provides a glimpse of how Euler's method may be generalized to compute the values of sums that are similar to $sum_(n=1)^oo 1/n^2$.
+
+== Proof
 
 
 = Conclusion
