@@ -214,6 +214,16 @@ The proof provides a glimpse of how Euler's method may be generalized to compute
 
 == Proof
 
+We begin with @eq:diff_of_squares.
+
+// My restate function.
+#let restate(label) = context{
+    let eq = query(label).first()
+    let num = counter(math.equation).at(label).first()
+    math.equation(block: true, numbering: n => "(" + str(num) + ")", eq)
+}
+
+#restate(<eq:diff_of_squares>)
 
 = Conclusion
 
