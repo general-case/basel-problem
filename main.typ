@@ -3,14 +3,27 @@
 #set heading(numbering: "1.")
 #set math.equation(numbering: "(1)", supplement: [equation]) // Default reference is "equation".
 
+// My restate function.
+#let restate(label) = context{
+    let eq = query(label).first()
+    let num = counter(math.equation).at(label).first()
+    math.equation(block: true, numbering: n => "(" + str(num) + ")", eq)
+}
+
 // #show math.equation.where(block: true): set align(left)
 
 // Notes
 /*
-Three core modes: markup, code initiated by #, and math initiated by $ $.
+Three core modes: markup (content surrounded by [ ]), code (content preceded by #), and math (content surrounded by $ $).
+Markup is the default mode but you can explicitly enter markup mode by surrounding the content with square brackets.
 
-If the math expression inside the $ $ delimiters is surrounded by spaces then the expression is typeset in display (block) mode.
+If a math expression inside the $ $ delimiters is surrounded by spaces then the expression is typeset in display (block) mode.
 Otherwise, the expression is typeset in line mode.
+
+In code mode, curly braces are used to define a code block.
+
+Code that needs to access contextual data, such as heading numbers, page numbers, equation numbers, etc, must run inside a context aware
+expression or code block introduced by the #context keyword. This requirement appears to be due to some kind of implementation detail.
 
 The @preview namespace on the import statement refers to the namespace for community contributed packages.
 
@@ -214,16 +227,13 @@ The proof provides a glimpse of how Euler's method may be generalized to compute
 
 == Proof
 
-We begin with @eq:diff_of_squares.
+We begin with @eq:weierstrass, which as noted earlier is a form of Weierstrass's factorization of sine.
 
-// My restate function.
-#let restate(label) = context{
-    let eq = query(label).first()
-    let num = counter(math.equation).at(label).first()
-    math.equation(block: true, numbering: n => "(" + str(num) + ")", eq)
-}
+#restate(<eq:weierstrass>)
 
-#restate(<eq:diff_of_squares>)
+We are interested in the $x^4$ terms in the expansion of the right-hand side of @eq:weierstrass.
+These terms can only arise from the multiplication of a pair of factors (containing $x^2$ terms).
+
 
 = Conclusion
 
