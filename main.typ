@@ -223,17 +223,43 @@ in order to prove the following theorem:
 
 #theorem(title: "Basel variant")[$ sum_(m=1)^oo sum_(n=m+1)^oo 1/(m^2n^2) = pi^4/120 $]<thm:basel_variant>
 
-The proof provides a glimpse of how Euler's method may be generalized to compute the values of sums that are similar to $sum_(n=1)^oo 1/n^2$.
+The proof offers a glimpse of how Euler's method may be generalized to compute the values of sums that are similar to $sum_(n=1)^oo 1/n^2$.
 
 == Proof
 
-We begin with @eq:weierstrass, which as noted earlier is a form of Weierstrass's factorization of sine.
+We begin by recalling @eq:weierstrass, which as noted earlier is a form of Weierstrass's factorization of sine.
 
 #restate(<eq:weierstrass>)
 
 We are interested in the $x^4$ terms in the expansion of the right-hand side of @eq:weierstrass.
-These terms can only arise from the multiplication of a pair of factors (containing $x^2$ terms).
+These terms can only arise from the multiplication of pairs of factors containing $x^2$ terms.
+Let's expand a simpler product with just four factors to see if we can observe a pattern.
 
+$
+(1 - a x^2)(1 - b x^2)(1 - c x^2)(1 - d x^2) \
+= (1 - a x^2 - b x^2 + a b x^4)(1 - c x^2)(1 - d x^2) \
+= (1 - a x^2 - b x^2 + a b x^4 - c x^2 + a c x^4 + b c x^4 - a b c x^6)(1 - d x^2) \
+= 1 - a x^2 - b x^2 + a b x^4 - c x^2 + a c x^4 + b c x^4 - a b c x^6 \
+    - d x^2 + a d x^4 + b d x^4 - a b d x^6 + c d x^4 - a c d x^6 - b c d x^6 + a b c d x^8
+$
+
+#pagebreak()
+
+Regrouping the 16 terms of the fully expanded expression we get:
+
+$
+& 1 & wide binom(4,0) = 1 "term " \ 
+& - a x^2 - b x^2  - c x^2 - d x^2 & wide binom(4,1) = 4 "terms"  \
+& + a b x^4 + a c x^4 + b c x^4 + a d x^4 + b d x^4  + c d x^4 & wide binom(4,2) = 6 "terms" \
+& - a b c x^6 - a b d x^6 - a c d x^6 - b c d x^6 & wide binom(4,3) = 4 "terms" \
+& + a b c d x^8 & wide binom(4,4) = 1 "term "
+$
+
+We note that the coefficients of the $x^4$ terms in the previous expression are the products of every #box([_2-combination_])
+drawn from the set of coefficients ${a,b,c,d}$.
+In other words, the products of every possible pair where the order does not matter and there are no repeats.
+
+Translating this to the situation in @eq:weierstrass, where the coefficients have the form $1/(k^2pi^2)$
 
 = Conclusion
 
