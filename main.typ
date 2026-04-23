@@ -213,7 +213,7 @@ x^6 C_6 +
 #sym.dots.h.c
 $ <eq:sum_of_sums>
 
-Recalling the Maclaurin series for sin from @eq:maclaurin_series_for_sin and dividing both sides by $x$ we get:
+Recalling the Maclaurin series for sine from @eq:maclaurin_series_for_sin and dividing both sides by $x$ we get:
 
 $ (sin x)/x = 1 - x^2/3! + x^4/5! - x^6/7! + #sym.dots.h.c $ <eq:maclaurin_series_for_sin_over_x>
 
@@ -257,11 +257,11 @@ $
 = (1 - a x^2 - b x^2 + a b x^4 - c x^2 + a c x^4 + b c x^4 - a b c x^6)(1 - d x^2) \
 = 1 - a x^2 - b x^2 + a b x^4 - c x^2 + a c x^4 + b c x^4 - a b c x^6 \
     - d x^2 + a d x^4 + b d x^4 - a b d x^6 + c d x^4 - a c d x^6 - b c d x^6 + a b c d x^8
-$
+$ <exp:initial_expansion>
 
 #pagebreak()
 
-Regrouping the 16 terms of the fully expanded expression we get:
+Regrouping the 16 terms of @exp:initial_expansion[expression] we get:
 
 $
 & 1 & wide binom(4,0) = 1 "term " \ 
@@ -269,7 +269,7 @@ $
 & + a b x^4 + a c x^4 + b c x^4 + a d x^4 + b d x^4  + c d x^4 & wide binom(4,2) = 6 "terms" \
 & - a b c x^6 - a b d x^6 - a c d x^6 - b c d x^6 & wide binom(4,3) = 4 "terms" \
 & + a b c d x^8 & wide binom(4,4) = 1 "term "
-$<exp:full_expansion>
+$ <exp:full_expansion>
 
 We note that the coefficients of the $x^4$ terms in the @exp:full_expansion[expression] are the products of every #box([_2-combination_])
 drawn from the set of coefficients ${a,b,c,d}$.
@@ -283,10 +283,25 @@ $ sum_(m=1)^oo sum_(n=m+1)^oo 1/(m^2 pi^2) x^2 1/(n^2 pi^2) x^2 $<exp:sum_of_pro
 
 Here, for each $m$ we run through every $n$ that is greater than $m$.
 Another option would be to run through every $n$ less than $m$, but in that case we would have to start $m$ at 2.
-Ultimately, it doesn't matter which approach we use as long as $m != n$ and that either $m < n$ or $m > n$ but not both.
+Ultimately, it doesn't matter which indexing scheme we choose as long as $m != n$ and that either $m < n$ or $m > n$, but not both.
 Rewriting @exp:sum_of_products[expression], we get:
 
-$ x^4/pi^2 sum_(m=1)^oo sum_(n=m+1)^oo 1/(m^2 n^2) $
+$ x^4/pi^4 sum_(m=1)^oo sum_(n=m+1)^oo 1/(m^2 n^2) $ <exp:sum_of_products_final>
+
+Recalling the Maclaurin series in @eq:maclaurin_series_for_sin_over_x:
+
+#restate(<eq:maclaurin_series_for_sin_over_x>)
+
+We can equate the coefficient of the $x^4$ term on the right-hand side of @eq:maclaurin_series_for_sin_over_x with the coefficient
+of $x^4$ in @exp:sum_of_products_final[expression] to get:
+
+$ 1/pi^4 sum_(m=1)^oo sum_(n=m+1)^oo 1/(m^2 n^2)  = 1/5! $
+
+Rewriting leads to the following which concludes the proof:
+
+$ sum_(m=1)^oo sum_(n=m+1)^oo 1/(m^2 n^2)  = pi^4/5! $
+
+
 
 = Conclusion
 
