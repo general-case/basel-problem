@@ -275,7 +275,18 @@ We note that the coefficients of the $x^4$ terms in the @exp:full_expansion[expr
 drawn from the set of coefficients ${a,b,c,d}$.
 That is, they are the products of every possible pair where the order does not matter and there are no repeats.
 
-Translating this to the situation in @eq:weierstrass, where the coefficients have the form $1/(k^2pi^2)$
+Translating this pattern to the situation in @eq:weierstrass, where the coefficients of the $x^2$ terms have the form $1/(k^2pi^2)$,
+we need the product of every possible pair of square terms, where the order does not matter and there are no repeats.
+To get the sum of products of every possible pair of square terms, we'll need two indexes, say $m$ and $n$:
+
+$ sum_(m=1)^oo sum_(n=m+1)^oo 1/(m^2 pi^2) x^2 1/(n^2 pi^2) x^2 $<exp:sum_of_products>
+
+Here, for each $m$ we run through every $n$ that is greater than $m$.
+Another option would be to run through every $n$ less than $m$, but in that case we would have to start $m$ at 2.
+Ultimately, it doesn't matter which approach we use as long as $m != n$ and that either $m < n$ or $m > n$ but not both.
+Rewriting @exp:sum_of_products[expression], we get:
+
+$ x^4/pi^2 sum_(m=1)^oo sum_(n=m+1)^oo 1/(m^2 n^2) $
 
 = Conclusion
 
