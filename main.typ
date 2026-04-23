@@ -46,23 +46,39 @@ Content may be placed in square brackets following a function call. This constru
 // Apply the show-theorion function to all elements in the document.
 #show : show-theorion
 
+// Title
+#v(1in)
 #let title = [A detailed explanation of Euler's solution to the Basel problem]
 #align(center, text(18pt)[#title])
+#v(0.5in)
 
-// Contents if I need it later.
-// #outline()
+// My ORCID link
+#let orcid = link("https://orcid.org/0009-0004-8349-6212")[
+    #box(image("ORCID-iD_icon_32x32.png", width: 10pt))
+]
+
+// Author
+#let author = [David Elliman] + [#orcid]
+#align(center, text(14pt)[#author])
+
+// Publication date
+#align(center, text(14pt)[May 2026])
+#v(0.5in)
 
 // #align(horizon, heading(numbering: none)[Abstract])
 
 // Style the abstract heading.
 #show <sec:abstract>: set heading(numbering: none)
-#show <sec:abstract>: set align(horizon)
-
+#show <sec:abstract>: set align(center)
 
 = Abstract <sec:abstract>
 This paper gives a detailed account of Euler's proof of the statement posed in the Basel problem.
 
 #pagebreak()
+
+// Contents if I need it later.
+// #outline()
+
 
 = Introduction
 
@@ -253,11 +269,11 @@ $
 & + a b x^4 + a c x^4 + b c x^4 + a d x^4 + b d x^4  + c d x^4 & wide binom(4,2) = 6 "terms" \
 & - a b c x^6 - a b d x^6 - a c d x^6 - b c d x^6 & wide binom(4,3) = 4 "terms" \
 & + a b c d x^8 & wide binom(4,4) = 1 "term "
-$
+$<exp:full_expansion>
 
-We note that the coefficients of the $x^4$ terms in the previous expression are the products of every #box([_2-combination_])
+We note that the coefficients of the $x^4$ terms in the @exp:full_expansion[expression] are the products of every #box([_2-combination_])
 drawn from the set of coefficients ${a,b,c,d}$.
-In other words, the products of every possible pair where the order does not matter and there are no repeats.
+That is, they are the products of every possible pair where the order does not matter and there are no repeats.
 
 Translating this to the situation in @eq:weierstrass, where the coefficients have the form $1/(k^2pi^2)$
 
