@@ -106,7 +106,7 @@ Euler's solution to the Basel problem is the following theorem:
 
 == Proof
 
-The $sin$ function is defined analytically as a Maclaurin series:
+The sine function is defined analytically as a Maclaurin series:
 
 $ sin x = x - x^3/3! + x^5/5! - x^7/7! + #sym.dots.h.c $ <eq:maclaurin_series_for_sin>
 
@@ -118,7 +118,7 @@ In the polynomial case, the constant is simply the leading coefficient, i.e. the
 In the case of a power series, since there are infinitely many terms, there is no highest degree term and thus no leading coefficient.
 However, the constant is still part of the factorization; it just has to be determined independently.
 
-Since the Maclaurin series for $sin$ is a power series, essentially an _infinite polynomial_, Euler reasoned that it could be
+Since the Maclaurin series for sine is a power series, essentially an _infinite polynomial_, Euler reasoned that it could be
 expressed as the product of a constant and infinitely many linear factors.
 This step was initially thought to be unjustified, but was later confirmed to be sound with the appearance Weierstrass's factorization theorem.\
 
@@ -231,9 +231,9 @@ $ sum_(n=1)^oo 1/n^2 = pi^2/3! $
 
 This concludes the proof.
 
-= Using Euler's approach to prove a similar theorem
+= Using Euler's method to prove a similar theorem
 
-It is instructive to consider Euler's approach applied to the $x^4$ terms of the
+It is instructive to consider Euler's method applied to the $x^4$ terms of the
 Maclaurin series and the Weierstrass factorization of the sine function
 in order to prove the following theorem:
 
