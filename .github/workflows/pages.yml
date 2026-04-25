@@ -24,7 +24,7 @@ jobs:
         run: typst compile main.typ main.pdf
 
       - name: Prepare site directory
-        run:
+        run: |
           mkdir site
           cp main.pdf site/main.pdf
 
