@@ -301,7 +301,7 @@ Rewriting leads to the following which concludes the proof:
 
 $ sum_(m=1)^oo sum_(n=m+1)^oo 1/(m^2 n^2)  = pi^4/5! $
 
-Test.
+Test 1.
 
 = Conclusion
 
