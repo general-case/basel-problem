@@ -85,16 +85,23 @@ This paper gives a detailed account of Euler's proof of the statement posed in t
 The Basel problem, originally posed by Italian mathematician Pietro Mengoli in his _Novae quadraturae arithmeticae_, published in 1650,
 asks for the value of the sum of the reciprocals of the squares of the natural numbers:
 
-$ sum_(n=1)^oo 1/n^2 $
+$ sum_(n=1)^oo 1/n^2 $ <exp:sum_of_reciprocal_squares>
 
 In 1734, Euler in his paper _De summis serierum reciprocarum_, showed that the series is equal to $pi^2/6$.
 
-Why is this sum interesting? Well, the harmonic series $sum_(n=1)^oo 1/n$ diverges, but very slowly.
-All smaller series converge and all larger ones diverge, so the harmonic series can be viewed as the boundary between convergence and divergence.
-The sum in the Basel problem, i.e. the sum of reciprocal squares, is essentially an integer step smaller than the harmonic series.
-On it's face, the sum of reciprocal squares seems straightforward to compute, but as we have seen,
+Why is this sum interesting?
+Well, @exp:sum_of_reciprocal_squares[expression] is an example of a _p-series_, all of which have the form $sum_(n=1)^oo 1/n^p$,
+where $p$ is a positive integer,
+or a natural number greater than one (depending on your definition of natural numbers)
+#footnote[Some authors define the natural numbers as starting at 1.].
+
+The largest p-series, with $p=1$, is the harmonic series $sum_(n=1)^oo 1/n$ which diverges but very slowly.
+All smaller p-series, i.e. $p>1$, converge, so the harmonic series can be viewed as the boundary between convergence and divergence.
+The sum in the Basel problem, i.e. the sum of reciprocal squares, is essentially an integer step smaller than the harmonic series,
+and is the largest p-series that we can compute a value for, so from that perspective it's arguably interesting.
+On its face, the sum of reciprocal squares seems straightforward to compute, but as we have seen,
 the Basel problem remained unsolved for over eighty years.
-It stood as a long term challenge and it's solution is considered a significant result in number theory.
+It stood as a long term challenge to mathematicians of the period, and its solution is considered a significant result in number theory.
 
 #pagebreak()
 
