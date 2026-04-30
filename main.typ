@@ -87,7 +87,8 @@ asks for the value of the sum of the reciprocals of the squares of the natural n
 
 $ sum_(n=1)^oo 1/n^2 $ <exp:sum_of_reciprocal_squares>
 
-In 1734, Euler in his paper _De summis serierum reciprocarum_, showed that the series is equal to $pi^2/6$.
+For convenience, we'll refer to this series as the Basel sum throughout the rest of this paper.
+In _De summis serierum reciprocarum_ of approximately 1734, Euler showed that the Basel sum is equal to $pi^2/6$.
 
 Why is this sum interesting?
 Well, @exp:sum_of_reciprocal_squares[expression] is an example of a _p-series_, all of which have the form $sum_(n=1)^oo 1/n^p$,
@@ -308,8 +309,11 @@ Rewriting leads to the following which concludes the proof:
 
 $ sum_(m=1)^oo sum_(n=m+1)^oo 1/(m^2 n^2)  = pi^4/5! $
 
-Test 1.
-
 = Conclusion
 
-We essentially equated the coefficients of specific terms from two different representations of the $(sin x)/x$ function.
+Euler's remarkable insight in solving the Basel problem was to recognize that he could equate the coefficients of like terms
+from two different representations of the $(sin x)/x$ function.
+The Maclaurin series representation of sine was well known at the time of Euler's work.
+However, in order to establish the second representation of $(sin x)/x$, Euler assumed that sine could be represented
+as an infinite product.
+His assumption anticipated Weierstrass's factorization theorem published in 1876 in a work on the theory of analytic functions .
