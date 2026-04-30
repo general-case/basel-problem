@@ -82,27 +82,36 @@ This paper gives a detailed account of Euler's proof of the statement posed in t
 
 = Introduction
 
-The Basel problem, originally posed by Italian mathematician Pietro Mengoli in his _Novae quadraturae arithmeticae_, published in 1650,
-asks for the value of the sum of the reciprocals of the squares of the natural numbers:
+The Basel problem, originally posed by Italian mathematician Pietro Mengoli in _Novae quadraturae arithmeticae_ (1650),
+asks for the value of the infinite series
 
-$ sum_(n=1)^oo 1/n^2 $ <exp:sum_of_reciprocal_squares>
+$ sum_(n=1)^oo 1/n^2 . $ <exp:sum_of_reciprocal_squares>
 
-For convenience, we'll refer to this series as the Basel sum throughout the rest of this paper.
-In _De summis serierum reciprocarum_ of approximately 1734, Euler showed that the Basel sum is equal to $pi^2/6$.
+We will refer to this series as the _Basel sum_.
+In _De summis serierum reciprocarum_ (1734), Euler showed that
 
-Why is this sum interesting?
-Well, @exp:sum_of_reciprocal_squares[expression] is an example of a _p-series_, all of which have the form $sum_(n=1)^oo 1/n^p$,
-where $p$ is a positive integer,
-or a natural number greater than one (depending on your definition of natural numbers)
-#footnote[Some authors define the natural numbers as starting at 1.].
+$ sum_(n=1)^oo 1/n^2 = pi^2/6, $
 
-The largest p-series, with $p=1$, is the harmonic series $sum_(n=1)^oo 1/n$ which diverges but very slowly.
-All smaller p-series, i.e. $p>1$, converge, so the harmonic series can be viewed as the boundary between convergence and divergence.
-The sum in the Basel problem, i.e. the sum of reciprocal squares, is essentially an integer step smaller than the harmonic series,
-and is the largest p-series that we can compute a value for, so from that perspective it's arguably interesting.
-On its face, the sum of reciprocal squares seems straightforward to compute, but as we have seen,
-the Basel problem remained unsolved for over eighty years.
-It stood as a long term challenge to mathematicians of the period, and its solution is considered a significant result in number theory.
+a result that is both elegant and unexpected.
+
+Despite its apparently simple form, the problem proved resistant to solution for more than eighty years
+and became a well-known challenge to mathematicians of the period.
+
+The Basel sum is a particular case of a class of series known as _p-series_, which have the form
+
+$ sum_(n=1)^oo 1/n^p, $
+
+where $p$ is a positive integer.
+
+These series exhibit a marked change in behavior at $p=1$.
+For the case where $p=1$, the p-series is simply the harmonic series, which diverges, albeit very slowly.
+In contrast, all other p-series, where $p>1$, converge.
+
+The Basel sum corresponds to the case where $p=2$, the smallest value of $p$ for which any p-series converges,
+and is consequently the p-series with the largest finite value.
+These properties make the Basel sum a natural starting point for understanding p-series in general, and likely contributed
+to the appeal of the Basel problem.
+In a sense, the Basel sum and the harmonic series mark the boundary between convergence and divergence.
 
 #pagebreak()
 
