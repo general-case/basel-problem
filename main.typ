@@ -72,7 +72,12 @@ Content may be placed in square brackets following a function call. This constru
 #show <sec:abstract>: set align(center)
 
 = Abstract <sec:abstract>
-This paper gives a detailed account of Euler's proof of the statement posed in the Basel problem.
+
+We present a detailed account of Euler’s solution to the Basel problem,
+a classical question about the sum of an infinite series.
+The key idea is to study a function that can be expressed in two different ways and to compare these representations to uncover information about the series.
+We present Euler's argument in detail and conclude by applying the same technique to a related problem,
+highlighting how the Euler's method can be applied more broadly.
 
 #pagebreak()
 
@@ -80,22 +85,23 @@ This paper gives a detailed account of Euler's proof of the statement posed in t
 // #outline()
 
 
-= Introduction
+= Introduction <sec:introduction>
 
 The Basel problem, originally posed by Italian mathematician Pietro Mengoli in _Novae quadraturae arithmeticae_ (1650),
 asks for the value of the infinite series
 
 $ sum_(n=1)^oo 1/n^2 . $ <exp:sum_of_reciprocal_squares>
 
-We will refer to this series as the _Basel sum_.
+Despite its apparent simplicity, the problem proved resistant to solution for more than eighty years
+and stood as a significant challenge to mathematicians of the period.
 In _De summis serierum reciprocarum_ (1734), Euler showed that
 
 $ sum_(n=1)^oo 1/n^2 = pi^2/6, $
 
-a result that is both elegant and unexpected.
+a result that is both elegant and unexpected, in particular because the value involves $pi$.
+The proof of this theorem in @sec:solution will reveal why $pi$ occurs in the result.
 
-Despite its apparently simple form, the problem proved resistant to solution for more than eighty years
-and became a well-known challenge to mathematicians of the period.
+For convenience, we will refer to @exp:sum_of_reciprocal_squares[expression] as the _Basel sum_.
 
 The Basel sum is a particular case of a class of series known as _p-series_, which have the form
 
@@ -107,15 +113,19 @@ These series exhibit a marked change in behavior at $p=1$.
 For the case where $p=1$, the p-series is simply the harmonic series, which diverges, albeit very slowly.
 In contrast, all other p-series, where $p>1$, converge.
 
-The Basel sum corresponds to the case where $p=2$, the smallest value of $p$ for which any p-series converges,
-and is consequently the p-series with the largest finite value.
+The Basel sum corresponds to the case where $p=2$,
+making it both the largest convergent p-series and the one with the smallest value of $p$.
+
 These properties make the Basel sum a natural starting point for understanding p-series in general, and likely contributed
 to the appeal of the Basel problem.
 In a sense, the Basel sum and the harmonic series mark the boundary between convergence and divergence.
 
+Moreover, the Basel sum and related p-series evaluated using Euler's method are useful for bounding the values
+of other series that are not p-series.
+
 #pagebreak()
 
-= Euler's solution to the Basel problem
+= Euler's solution to the Basel problem <sec:solution>
 
 Euler's solution to the Basel problem is the following theorem:
 
@@ -246,9 +256,9 @@ $ 1/pi^2 S_2 = 1/3! $
 $ 1/pi^2 sum_(n=1)^oo 1/n^2 = 1/3! $
 $ sum_(n=1)^oo 1/n^2 = pi^2/3! $
 
-This concludes the proof.
+This completes the proof.
 
-= Using Euler's method to prove a similar theorem
+= Using Euler's method to prove a similar theorem <sec:similar_theorem>
 
 It is instructive to consider Euler's method applied to the $x^4$ terms of the
 Maclaurin series and the Weierstrass factorization of the sine function
@@ -314,15 +324,15 @@ of $x^4$ in @exp:sum_of_products_final[expression] to get:
 
 $ 1/pi^4 sum_(m=1)^oo sum_(n=m+1)^oo 1/(m^2 n^2)  = 1/5! $
 
-Rewriting leads to the following which concludes the proof:
+Rewriting leads to the following statement which completes the proof.
 
 $ sum_(m=1)^oo sum_(n=m+1)^oo 1/(m^2 n^2)  = pi^4/5! $
 
-= Conclusion
+= Conclusion <sec:conclusion>
 
 Euler's remarkable insight in solving the Basel problem was to recognize that he could equate the coefficients of like terms
 from two different representations of the $(sin x)/x$ function.
 The Maclaurin series representation of sine was well known at the time of Euler's work.
 However, in order to establish the second representation of $(sin x)/x$, Euler assumed that sine could be represented
 as an infinite product.
-His assumption anticipated Weierstrass's factorization theorem published in 1876 in a work on the theory of analytic functions .
+His assumption anticipated Weierstrass's factorization theorem published in 1876 in a work on the theory of analytic functions.
