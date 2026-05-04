@@ -328,6 +328,32 @@ Rewriting leads to the following statement which completes the proof.
 
 $ sum_(m=1)^oo sum_(n=m+1)^oo 1/(m^2 n^2)  = pi^4/5! $
 
+#pagebreak()
+
+#let rows = range(1, 6)
+#let cols = range(1, 6)
+
+#table(
+    align: center + horizon,
+    columns: cols.len() + 1, // +1 for the vertical header column
+    fill: (x, y) => if x == 0 or y == 0 { gray.lighten(60%) },
+
+    // Top-left empty corner cell
+    [m/n],
+
+    // Generate the first row (horizontal headers)
+    ..cols.map(c => [#c]),
+
+    // Generate the rest of the table
+    ..for r in rows
+    {
+        (
+            [#r], // First column (vertical header)
+            ..cols.map(c => math.equation(block: true, numbering: none)[$ 1/(#r^2 #c^2) $]) // Function of r and c
+        )
+    }
+)
+
 = Conclusion <sec:conclusion>
 
 Euler's remarkable insight in solving the Basel problem was to recognize that he could equate the coefficients of like terms
