@@ -330,20 +330,45 @@ $ sum_(m=1)^oo sum_(n=m+1)^oo 1/(m^2 n^2)  = pi^4/5! $
 
 #pagebreak()
 
-
 // Build an m row by n column table.
+// Parameters:
+// m - number of rows
+// n - number of columns
+// cell-expression - a function that returns an expression to be typeset into the current cell
+// cell-expression parameters:
+// i - the row number of the cell
+// j - the column number of the cell
 #let number-array(m, n, cell-expression) = { 
 
+    // Create an empty array.
     let result = ()
 
+    // Create a diagonal box to hold the row and column labels.
+    let diag-box = box(width:  2em,
+                       height: 2em,
+                       inset:  0pt, // Padding.
+                       outset: 0pt, // Margin.
+                       stroke: none, // Border.
+                       [#place(top+right,   dy: 10%,  dx: -10%, [n])
+                        #place(bottom+left, dy: -10%, dx: 10%,  [m])
+                        #line(start: (0%,0%), end: (100%,100%), stroke: 0.8pt,length: 110%)])
+
+    // Embed the diagonal box in a table cell in order to control the padding (inset).
+    let diag-cell = table.cell(inset: 0pt)[#diag-box]
+
+    // Populate each cell in the two dimensional number array.
     for i in range(m+1){
         for j in range(n+1){
-            if i == 0 and j == 0 {result.push([m/n])}
-            else if i == 0 {result.push([#j])}
-            else if j == 0 {result.push([#i])}
-            else {result.push(math.equation(block: true, numbering: none)[#cell-expression(i, j)])}
+            if i == 0 and j == 0 {result.push([#diag-cell])} // Top left cell.
+            else if i == 0 {result.push([#j])}               // Column header.
+            else if j == 0 {result.push([#i])}               // Row header.
+            else {result.push(math.equation(block: true, numbering: none)[#cell-expression(i, j)])} // Expression.
         }
     }
+
+    // Typeset the table.
+    // Note that .. is the argument spreading operator which converts an array to a sequence of positional arguments
+    // required by, in this case, the table function.
     table(columns: n+1,
           align: center + horizon,
           fill: (x, y) => if x == 0 or y == 0 { gray.lighten(60%) },
@@ -351,36 +376,12 @@ $ sum_(m=1)^oo sum_(n=m+1)^oo 1/(m^2 n^2)  = pi^4/5! $
 }
 
 // The parameterized expression that goes into each cell.
-// We could use a lambda abstraction instead.
 #let reciprocal-product-of-squares(i, j) = $ 1/(#i^2 #j^2) $
 
 #number-array(5, 5, reciprocal-product-of-squares)
+
+// We can use a lambda abstraction instead.
 // #number-array(4, 4, (i, j) => $ 1/(#i^2 #j^2) $ )
-
-
-#let rows = range(1, 6)
-#let cols = range(1, 6)
-
-#table(
-    align: center + horizon,
-    columns: cols.len() + 1, // +1 for the vertical header column
-    fill: (x, y) => if x == 0 or y == 0 { gray.lighten(60%) },
-
-    // Top-left empty corner cell
-    [m/n],
-
-    // Generate the first row (horizontal headers)
-    ..cols.map(c => [#c]),
-
-    // Generate the rest of the table
-    ..for r in rows
-    {
-        (
-            [#r], // First column (vertical header)
-            ..cols.map(c => math.equation(block: true, numbering: none)[$ 1/(#r^2 #c^2) $]) // Function of r and c
-        )
-    }
-)
 
 = Conclusion <sec:conclusion>
 
