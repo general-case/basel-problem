@@ -330,6 +330,34 @@ $ sum_(m=1)^oo sum_(n=m+1)^oo 1/(m^2 n^2)  = pi^4/5! $
 
 #pagebreak()
 
+
+// Build an m row by n column table.
+#let number-array(m, n, cell-expression) = { 
+
+    let result = ()
+
+    for i in range(m+1){
+        for j in range(n+1){
+            if i == 0 and j == 0 {result.push([m/n])}
+            else if i == 0 {result.push([#j])}
+            else if j == 0 {result.push([#i])}
+            else {result.push(math.equation(block: true, numbering: none)[#cell-expression(i, j)])}
+        }
+    }
+    table(columns: n+1,
+          align: center + horizon,
+          fill: (x, y) => if x == 0 or y == 0 { gray.lighten(60%) },
+          ..result)
+}
+
+// The parameterized expression that goes into each cell.
+// We could use a lambda abstraction instead.
+#let reciprocal-product-of-squares(i, j) = $ 1/(#i^2 #j^2) $
+
+#number-array(5, 5, reciprocal-product-of-squares)
+// #number-array(4, 4, (i, j) => $ 1/(#i^2 #j^2) $ )
+
+
 #let rows = range(1, 6)
 #let cols = range(1, 6)
 
