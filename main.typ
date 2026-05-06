@@ -330,15 +330,30 @@ $ sum_(m=1)^oo sum_(n=m+1)^oo 1/(m^2 n^2)  = pi^4/5! $
 
 #pagebreak()
 
+// Highlight colors (RGBA).
+#let hl-green  = rgb("#1bfc06ff")
+#let hl-pink   = rgb("#ff13f0ff")
+#let hl-yellow = rgb("#fffd11ff")
+
 // Build an m row by n column table.
 // Parameters:
 // m - number of rows
 // n - number of columns
-// cell-expression - a function that returns an expression to be typeset into the current cell
-// cell-expression parameters:
-// i - the row number of the cell
-// j - the column number of the cell
-#let number-array(m, n, cell-expression) = { 
+// 
+// cell-expression - a function that returns an expression to be rendered in the (i row, j column) cell.
+//     cell-expression parameters:
+//     i - the row number of the cell
+//     j - the column number of the cell
+//     return - the content to be rendered
+// 
+// diagonal-hl - color used to highlight the main diagonal
+// upper-triangle-hl - color used to highlight the upper triangle of the array
+// lower-triangle-hl - color used to highlight the lower triangle of the array
+//
+#let number-array(m, n, cell-expression,
+                  diagonal-hl: rgb("#00000000"),
+                  upper-triangle-hl: rgb("#00000000"),
+                  lower-triangle-hl: rgb("#00000000")) = { 
 
     // Create an empty array.
     let result = ()
@@ -367,13 +382,15 @@ $ sum_(m=1)^oo sum_(n=m+1)^oo 1/(m^2 n^2)  = pi^4/5! $
     }
 
     // Function to handle header row and column shading and highlighting regions of the table.
-    let region-shader(x, y, upper: false) = {
+    let region-shader(x, y) = {
 
         // Header row and column shading.
         if x == 0 or y == 0 { gray.lighten(60%) }
 
-        // Selected region.
-        else if x > y { rgb("#fffd11a1") }
+        // Color regions.
+        else if x > y { upper-triangle-hl }
+        else if x < y { lower-triangle-hl }
+        else { diagonal-hl }
     }
 
     // Typeset the table.
@@ -385,12 +402,16 @@ $ sum_(m=1)^oo sum_(n=m+1)^oo 1/(m^2 n^2)  = pi^4/5! $
           ..result)
 }
 
-// The parameterized expression that goes into each cell.
+// Define the function that renders the content for each (i,j) cell.
 #let reciprocal-product-of-squares(i, j) = $ 1/(#i^2 #j^2) $
 
-#number-array(5, 5, reciprocal-product-of-squares)
+// Render the number array.
+#number-array(5, 5,
+              reciprocal-product-of-squares,
+              lower-triangle-hl: hl-yellow,
+              diagonal-hl: hl-pink)
 
-// We can use a lambda abstraction instead.
+// We can use a lambda abstraction for the expression function.
 // #number-array(4, 4, (i, j) => $ 1/(#i^2 #j^2) $ )
 
 = Conclusion <sec:conclusion>
