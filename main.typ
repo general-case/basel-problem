@@ -405,14 +405,16 @@ $ sum_(m=1)^oo sum_(n=m+1)^oo 1/(m^2 n^2)  = pi^4/5! $
 // Define the function that renders the content for each (i,j) cell.
 #let reciprocal-product-of-squares(i, j) = $ 1/(#i^2 #j^2) $
 
-// Render the number array.
-#number-array(5, 5,
-              reciprocal-product-of-squares,
-              lower-triangle-hl: hl-yellow,
-              diagonal-hl: hl-pink)
-
-// We can use a lambda abstraction for the expression function.
+// Alternatively, we can use a lambda abstraction for the expression function.
 // #number-array(4, 4, (i, j) => $ 1/(#i^2 #j^2) $ )
+
+// Create the number array table and render it inside a figure.
+#let number-array = number-array(5, 5,
+                                 reciprocal-product-of-squares,
+                                 lower-triangle-hl: hl-yellow,
+                                 diagonal-hl: hl-pink)
+
+#figure(number-array, caption: [Hello])
 
 = Conclusion <sec:conclusion>
 
