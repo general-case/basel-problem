@@ -343,7 +343,7 @@ $ sum_(m=1)^oo sum_(n=m+1)^oo 1/(m^2 n^2)  = pi^4/5! $
     // Create an empty array.
     let result = ()
 
-    // Create a diagonal box to hold the row and column labels.
+    // Create a box with a diagonal line separating the row and column labels, m and n in this case.
     let diag-box = box(width:  2em,
                        height: 2em,
                        inset:  0pt, // Padding.
@@ -366,12 +366,22 @@ $ sum_(m=1)^oo sum_(n=m+1)^oo 1/(m^2 n^2)  = pi^4/5! $
         }
     }
 
+    // Function to handle header row and column shading and highlighting regions of the table.
+    let region-shader(x, y, upper: false) = {
+
+        // Header row and column shading.
+        if x == 0 or y == 0 { gray.lighten(60%) }
+
+        // Selected region.
+        else if x > y { rgb("#fffd11a1") }
+    }
+
     // Typeset the table.
     // Note that .. is the argument spreading operator which converts an array to a sequence of positional arguments
     // required by, in this case, the table function.
     table(columns: n+1,
           align: center + horizon,
-          fill: (x, y) => if x == 0 or y == 0 { gray.lighten(60%) },
+          fill: region-shader,
           ..result)
 }
 
