@@ -353,7 +353,8 @@ $ sum_(m=1)^oo sum_(n=m+1)^oo 1/(m^2 n^2)  = pi^4/5! $
 #let number-array(m, n, cell-expression,
                   diagonal-hl: rgb("#00000000"),
                   upper-triangle-hl: rgb("#00000000"),
-                  lower-triangle-hl: rgb("#00000000")) = { 
+                  lower-triangle-hl: rgb("#00000000"),
+                  ellipsis: false) = { 
 
     // Create an empty array.
     let result = ()
@@ -371,7 +372,7 @@ $ sum_(m=1)^oo sum_(n=m+1)^oo 1/(m^2 n^2)  = pi^4/5! $
     // Embed the diagonal box in a table cell in order to control the padding (inset).
     let diag-cell = table.cell(inset: 0pt)[#diag-box]
 
-    // Populate each cell in the two dimensional number array.
+    // Populate each cell in the two dimensional table.
     for i in range(m+1){
         for j in range(n+1){
             if i == 0 and j == 0 {result.push([#diag-cell])} // Top left cell.
@@ -379,7 +380,13 @@ $ sum_(m=1)^oo sum_(n=m+1)^oo 1/(m^2 n^2)  = pi^4/5! $
             else if j == 0 {result.push([#i])}               // Row header.
             else {result.push(math.equation(block: true, numbering: none)[#cell-expression(i, j)])} // Expression.
         }
+
+        // Conditionally append an ellipsis to the end of the row.
+        if ellipsis {result.push([...])}
     }
+
+    // Conditionally append an ellipsis to the bottom of the column.
+    if (ellipsis) {for j in range(n+2){result.push([...])}}
 
     // Function to handle header row and column shading and highlighting regions of the table.
     let region-shader(x, y) = {
@@ -387,16 +394,16 @@ $ sum_(m=1)^oo sum_(n=m+1)^oo 1/(m^2 n^2)  = pi^4/5! $
         // Header row and column shading.
         if x == 0 or y == 0 { gray.lighten(60%) }
 
-        // Color regions.
+        // Highlighted regions.
         else if x > y { upper-triangle-hl }
         else if x < y { lower-triangle-hl }
         else { diagonal-hl }
     }
 
-    // Typeset the table.
+    // Typeset and return the table.
     // Note that .. is the argument spreading operator which converts an array to a sequence of positional arguments
     // required by, in this case, the table function.
-    table(columns: n+1,
+    table(columns: if ellipsis {n+2} else {n+1},
           align: center + horizon,
           fill: region-shader,
           ..result)
@@ -412,7 +419,8 @@ $ sum_(m=1)^oo sum_(n=m+1)^oo 1/(m^2 n^2)  = pi^4/5! $
 #let number-array = number-array(5, 5,
                                  reciprocal-product-of-squares,
                                  lower-triangle-hl: hl-yellow,
-                                 diagonal-hl: hl-pink)
+                                 diagonal-hl: hl-pink,
+                                 ellipsis: true)
 
 #figure(number-array, caption: [Hello])
 
