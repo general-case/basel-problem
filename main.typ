@@ -132,7 +132,7 @@ Euler's solution to the Basel problem is the following theorem:
 
 The sine function is defined analytically as a Maclaurin series:
 
-$ sin x = x - x^3/3! + x^5/5! - x^7/7! + #sym.dots.h.c $ <eq:maclaurin_series_for_sin>
+$ sin x = x - x^3/3! + x^5/5! - x^7/7! + dots.c $ <eq:maclaurin_series_for_sin>
 
 A polynomial function can be expressed as the product of a constant, a finite number of real linear factors, and a finite number of irreducible real quadratics.
 The irreducible real quadratics appear only when the polynomial has one or more non-real complex roots.
@@ -146,33 +146,33 @@ Since the Maclaurin series for sine is a power series, essentially an _infinite 
 expressed as the product of a constant and infinitely many linear factors.
 This step was initially thought to be unjustified, but was later confirmed to be sound with the appearance Weierstrass's factorization theorem.\
 
-Since $sin x$ is zero _only_ at $x=0, plus.minus pi, plus.minus 2pi, plus.minus 3pi, #sym.dots$, these values are the roots of the Maclaurin series.
+Since $sin x$ is zero _only_ at $x=0, plus.minus pi, plus.minus 2pi, plus.minus 3pi, dots$, these values are the roots of the Maclaurin series.
 Note that since the roots have the form $plus.minus k pi$ for all $k in NN$ and are thus all real,
 the series can be expressed as the product of a constant $c$ and real linear factors of the form $(x plus.minus k pi)$.
 
-$ sin x = c (x-0)(x-pi)(x+pi)(x-2pi)(x+2pi)(x-3pi)(x+3pi) #sym.dots.h.c $
-$ sin x = c x(x-pi)(x+pi)(x-2pi)(x+2pi)(x-3pi)(x+3pi) #sym.dots.h.c $
-$ (sin x)/x = c (x-pi)(x+pi)(x-2pi)(x+2pi)(x-3pi)(x+3pi) #sym.dots.h.c $
-$ (sin x)/x = c (x^2 - pi^2)(x^2 - 4pi^2)(x^2 - 9pi^2 ) #sym.dots.h.c wide "Difference of squares" $ <eq:diff_of_squares>
+$ sin x = c (x-0)(x-pi)(x+pi)(x-2pi)(x+2pi)(x-3pi)(x+3pi) dots.c $
+$ sin x = c x(x-pi)(x+pi)(x-2pi)(x+2pi)(x-3pi)(x+3pi) dots.c $
+$ (sin x)/x = c (x-pi)(x+pi)(x-2pi)(x+2pi)(x-3pi)(x+3pi) dots.c $
+$ (sin x)/x = c (x^2 - pi^2)(x^2 - 4pi^2)(x^2 - 9pi^2 ) dots.c wide "Difference of squares" $ <eq:diff_of_squares>
 
 #pagebreak()
 
 The next step is to determine the value of the constant $c$.\
 Now, $(sin x)/x$ is undefined at $x=0$, but we can take the limit of both sides as x goes to zero:
 
-$ lim_(x->0) (sin x)/x = lim_(x->0) c (x^2 - pi^2)(x^2 - 4pi^2)(x^2 - 9pi^2 ) #sym.dots.h.c $
+$ lim_(x->0) (sin x)/x = lim_(x->0) c (x^2 - pi^2)(x^2 - 4pi^2)(x^2 - 9pi^2 ) dots.c $
 
 The limit of the left side is simply 1, i.e. $lim_(x->0) (sin x)/x = 1$, which can be verified through a simple application of L'Hospital.
 Thus, we have:
 
-$ 1 = c (- pi^2)(- 4pi^2)(- 9pi^2) #sym.dots.h.c $
-$ c = 1 / ((- pi^2)(- 4pi^2)(- 9pi^2) #sym.dots.h.c) $
-$ c = (1 / (- pi^2)) (1 / (- 4pi^2)) (1 / (- 9pi^2)) #sym.dots.h.c $
+$ 1 = c (- pi^2)(- 4pi^2)(- 9pi^2) dots.c $
+$ c = 1 / ((- pi^2)(- 4pi^2)(- 9pi^2) dots.c) $
+$ c = (1 / (- pi^2)) (1 / (- 4pi^2)) (1 / (- 9pi^2)) dots.c $
 
 Pairing each factor of $c$ with its matching difference of squares factor from @eq:diff_of_squares, we get:
 
-$ (sin x)/x = (1 / (- pi^2))(x^2 - pi^2) (1 / (- 4pi^2))(x^2 - 4pi^2) (1 / (- 9pi^2))(x^2 - 9pi^2 ) #sym.dots.h.c $
-$ (sin x)/x = (1-x^2/(pi^2)) (1-x^2/(4pi^2)) (1-x^2/(9pi^2)) #sym.dots.h.c $ <eq:weierstrass>
+$ (sin x)/x = (1 / (- pi^2))(x^2 - pi^2) (1 / (- 4pi^2))(x^2 - 4pi^2) (1 / (- 9pi^2))(x^2 - 9pi^2 ) dots.c $
+$ (sin x)/x = (1-x^2/(pi^2)) (1-x^2/(4pi^2)) (1-x^2/(9pi^2)) dots.c $ <eq:weierstrass>
 
 As a brief aside, we should note that @eq:weierstrass is equivalent to Weierstrass's factorization of $sin x$.
 
@@ -199,10 +199,10 @@ Continuing this process indefinitely, we end up with a sum of the form:
 
 $
 1 -
-x^2/pi^2(1/1 + 1/4 + 1/9 + #sym.dots.h.c) +
-x^4/pi^4(1/4 + 1/9 + 1/36 + #sym.dots.h.c) -
-x^6/pi^6(1/36 + #sym.dots.h.c) +
-#sym.dots.h.c
+x^2/pi^2(1/1 + 1/4 + 1/9 + dots.c) +
+x^4/pi^4(1/4 + 1/9 + 1/36 + dots.c) -
+x^6/pi^6(1/36 + dots.c) +
+dots.c
 $
 
 We'll set $S_2, S_4, "and" S_6$ equal to the sums in the $x^2, x^4, "and" x^6$ terms respectively.\
@@ -223,7 +223,7 @@ $
 x^2 C_2 +
 x^4 C_4 -
 x^6 C_6 +
-#sym.dots.h.c
+dots.c
 $
 
 This sum is equal to $(sin x)/x$, so we have:
@@ -234,12 +234,12 @@ $
 x^2 C_2 +
 x^4 C_4 -
 x^6 C_6 +
-#sym.dots.h.c
+dots.c
 $ <eq:sum_of_sums>
 
 Recalling the Maclaurin series for sine from @eq:maclaurin_series_for_sin and dividing both sides by $x$ we get:
 
-$ (sin x)/x = 1 - x^2/3! + x^4/5! - x^6/7! + #sym.dots.h.c $ <eq:maclaurin_series_for_sin_over_x>
+$ (sin x)/x = 1 - x^2/3! + x^4/5! - x^6/7! + dots.c $ <eq:maclaurin_series_for_sin_over_x>
 
 Equating the coefficients of the $x^2$ terms from @eq:sum_of_sums and @eq:maclaurin_series_for_sin_over_x we get:
 
