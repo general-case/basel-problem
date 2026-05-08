@@ -382,11 +382,11 @@ $ sum_(m=1)^oo sum_(n=m+1)^oo 1/(m^2 n^2)  = pi^4/5! $
         }
 
         // Conditionally append an ellipsis to the end of the row.
-        if ellipsis {result.push([...])}
+        if ellipsis {result.push($dots.c$)}
     }
 
     // Conditionally append an ellipsis to the bottom of the column.
-    if (ellipsis) {for j in range(n+2){result.push([...])}}
+    if (ellipsis) {for j in range(n+1){result.push($dots.v$)}; result.push($dots.down$)}
 
     // Function to handle header row and column shading and highlighting regions of the table.
     let region-shader(x, y) = {
