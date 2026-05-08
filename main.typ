@@ -14,7 +14,7 @@
 
 // Notes
 /*
-Three core modes: markup (content surrounded by [ ]), code (content preceded by #), and math (content surrounded by $ $).
+There are 3 core modes: markup (content surrounded by [ ]), code (content preceded by #), and math (content surrounded by $ $).
 Markup is the default mode but you can explicitly enter markup mode by surrounding the content with square brackets.
 
 If a math expression inside the $ $ delimiters is surrounded by spaces then the expression is typeset in display (block) mode.
@@ -37,6 +37,9 @@ When a function is used as a show rule style, it is applied to each matching ele
 The let statement allows you to introduce a variable and assign a value to it or define a function.
 
 Content may be placed in square brackets following a function call. This construct is called a trailing content block.
+
+The argument spreading operator .. converts an array to a sequence of positional arguments.
+Functions like table and grid take data as a sequence of positional arguments rather than an array.
 
 */
 
