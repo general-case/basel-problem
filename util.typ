@@ -15,6 +15,9 @@
 #let hl-pink   = rgb("#ff13f0ff")
 #let hl-yellow = rgb("#fffd11ff")
 
+// Header row and column color.
+#let header-color = gray.lighten(60%)
+
 // Build an m row by n column table.
 // Parameters:
 // m - number of rows
@@ -62,18 +65,19 @@
             else {result.push(math.equation(block: true, numbering: none)[#cell-expression(i, j)])} // Expression.
         }
 
-        // Conditionally append an ellipsis to the end of the row.
+        // Conditionally append a horizontal ellipsis to the end of each row.
         if ellipsis {result.push($dots.c$)}
     }
 
-    // Conditionally append an ellipsis to the bottom of the column.
+    // Conditionally append a vertical ellipsis to the bottom of each column and
+    // a diagonal ellipsis to the bottom rightmost cell.
     if (ellipsis) {for j in range(n+1){result.push($dots.v$)}; result.push($dots.down$)}
 
     // Function to handle header row and column shading and highlighting regions of the table.
     let region-shader(x, y) = {
 
         // Header row and column shading.
-        if x == 0 or y == 0 { gray.lighten(60%) }
+        if x == 0 or y == 0 { header-color }
 
         // Highlighted regions.
         else if x > y { upper-triangle-hl }
@@ -89,4 +93,11 @@
           fill: region-shader,
           ..result)
 }
+
+// Example function to render the content of each (i,j) cell.
+// #let reciprocal-product-of-squares(i, j) = $ 1/(#i^2 #j^2) $
+// #number-array(4, 4, reciprocal-product-of-squares)
+
+// Alternatively, you can use a lambda abstraction for the expression function.
+// #number-array(4, 4, (i, j) => $ 1/(#i^2 #j^2) $ )
 
