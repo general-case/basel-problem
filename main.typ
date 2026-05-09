@@ -70,11 +70,11 @@ Functions like table and grid take data as a sequence of positional arguments ra
 
 = Abstract <sec:abstract>
 
-We present a detailed account of Euler’s solution to the Basel problem,
-a classical question about the sum of an infinite series.
+We present a detailed account of Euler's solution to the Basel problem,
+a classical question about the infinite sum of reciprocal squares.
 The key idea is to study a function that can be expressed in two different ways and to compare these representations to uncover information about the series.
-We present Euler's argument in detail and conclude by applying the same technique to a related problem,
-highlighting how the Euler's method can be applied more broadly.
+We present Euler's argument in detail and conclude by applying the same technique to a related problems,
+demonstrating how the Euler's method can be applied in various settings.
 
 #pagebreak()
 
@@ -126,7 +126,7 @@ of other series that are not p-series.
 
 Euler's solution to the Basel problem is the following theorem:
 
-#theorem(title: "Basel problem")[$ sum_(n=1)^oo 1/n^2 = pi^2/6 $]<thm:basel_problem>
+#theorem(title: "Basel problem")[$ sum_(n=1)^oo 1/n^2 = pi^2/6 $] <thm:basel_problem>
 
 == Proof
 
@@ -183,9 +183,9 @@ However, since we are following Euler's development of the argument, we chose to
 
 If we progressively FOIL a number of factors of the infinite product on the right-hand side of @eq:weierstrass from left to right we get:
 
-$ (1-x^2/(pi^2)) (1-x^2/(4pi^2)) (1-x^2/(9pi^2)) $<exp:foil_1>
-$ (1-x^2/(pi^2) - x^2/(4pi^2) + x^4/(4pi^4)) (1-x^2/(9pi^2)) $<exp:foil_2>
-$ (1-x^2/(pi^2) - x^2/(4pi^2) + x^4/(4pi^4) - x^2/(9pi^2) + x^4/(9pi^4) + x^4/(36pi^4) - x^6/(36pi^6)) $<exp:foil_3>
+$ (1-x^2/(pi^2)) (1-x^2/(4pi^2)) (1-x^2/(9pi^2)) $ <exp:foil_1>
+$ (1-x^2/(pi^2) - x^2/(4pi^2) + x^4/(4pi^4)) (1-x^2/(9pi^2)) $ <exp:foil_2>
+$ (1-x^2/(pi^2) - x^2/(4pi^2) + x^4/(4pi^4) - x^2/(9pi^2) + x^4/(9pi^4) + x^4/(36pi^4) - x^6/(36pi^6)) $ <exp:foil_3>
 
 #pagebreak()
 
@@ -255,13 +255,13 @@ $ sum_(n=1)^oo 1/n^2 = pi^2/3! $
 
 This completes the proof.
 
-= Using Euler's method to prove a similar theorem <sec:similar_theorem>
+= Using Euler's method to prove a related theorems <sec:similar_theorem>
 
 It is instructive to consider Euler's method applied to the $x^4$ terms of the
 Maclaurin series and the Weierstrass factorization of the sine function
 in order to prove the following theorem:
 
-#theorem(title: "Basel variant")[$ sum_(m=1)^oo sum_(n=m+1)^oo 1/(m^2n^2) = pi^4/120 $]<thm:basel_variant>
+#theorem(title: "Basel variant")[$ sum_(m=1)^oo sum_(n=m+1)^oo 1/(m^2n^2) = pi^4/120 $] <thm:basel_variant>
 
 The proof offers a glimpse of how Euler's method may be generalized to compute the values of sums that are similar to $sum_(n=1)^oo 1/n^2$.
 
@@ -303,7 +303,7 @@ Translating this pattern to the situation in @eq:weierstrass, where the coeffici
 we need the product of every possible pair of square terms, where the order does not matter and there are no repeats.
 To get the sum of products of every possible pair of square terms, we'll need two indexes, say $m$ and $n$:
 
-$ sum_(m=1)^oo sum_(n=m+1)^oo 1/(m^2 pi^2) x^2 1/(n^2 pi^2) x^2 $<exp:sum_of_products>
+$ sum_(m=1)^oo sum_(n=m+1)^oo 1/(m^2 pi^2) x^2 1/(n^2 pi^2) x^2 $ <exp:sum_of_products>
 
 Here, for each $m$ we run through every $n$ that is greater than $m$.
 Another option would be to run through every $n$ less than $m$, but in that case we would have to start $m$ at 2.
@@ -319,13 +319,19 @@ Recalling the Maclaurin series in @eq:maclaurin_series_for_sin_over_x:
 We can equate the coefficient of the $x^4$ term on the right-hand side of @eq:maclaurin_series_for_sin_over_x with the coefficient
 of $x^4$ in @exp:sum_of_products_final[expression] to get:
 
-$ 1/pi^4 sum_(m=1)^oo sum_(n=m+1)^oo 1/(m^2 n^2)  = 1/5! $
+$ 1/pi^4 sum_(m=1)^oo sum_(n=m+1)^oo 1/(m^2 n^2) = 1/5! $
 
 Rewriting leads to the following statement which completes the proof.
 
-$ sum_(m=1)^oo sum_(n=m+1)^oo 1/(m^2 n^2)  = pi^4/5! $
+$ sum_(m=1)^oo sum_(n=m+1)^oo 1/(m^2 n^2) = pi^4/5! $
 
 #pagebreak()
+
+Needs work!
+Armed with the previous result, we can prove a related result in a straightforward manner.
+The following figure depicts the series
+
+$ sum_(m=1)^oo sum_(n=1)^oo 1/(m^2 n^2) . $
 
 // Define the function that renders the content for each (i,j) cell.
 #let reciprocal-product-of-squares(i, j) = $ 1/(#i^2 #j^2) $
@@ -336,11 +342,35 @@ $ sum_(m=1)^oo sum_(n=m+1)^oo 1/(m^2 n^2)  = pi^4/5! $
 // Create the number array table and render it inside a figure.
 #let number-array = number-array(5, 5,
                                  reciprocal-product-of-squares,
-                                 lower-triangle-hl: hl-yellow,
+                                 upper-triangle-hl: hl-yellow,
                                  diagonal-hl: hl-pink,
+                                 lower-triangle-hl: hl-green,
                                  ellipsis: true)
 
-#figure(number-array, caption: [Hello])
+#figure(number-array, caption: [Sum of reciprocal product squares]) <fig:reciprocal-product-of-squares>
+
+Observe that the sum of the terms in upper triangle, highlighted in yellow, is the sum of @thm:basel_variant[theorem],
+and by symmetry the sum of the terms in the lower triangle, highlighted in green, has the the same value, i.e. $pi^4/5!$.
+The terms along the major diagonal, highlighted in pink, satisfy $m=n$.
+Thus the sum of the terms along the major diagonal is
+
+$ sum_(n=1)^oo 1/(n^2 n^2) , $
+
+which can be rewritten as
+
+$ sum_(n=1)^oo 1/(n^2) sum_(n=1)^oo 1/(n^2) . $
+
+From @thm:basel_problem[theorem], we conclude the sum of the terms along the major diagonal is $pi^2/6 dot pi^2/6 = pi^4/36$.
+
+Adding the sums of the terms from the three regions depicted in @fig:reciprocal-product-of-squares we have
+
+$ sum_(m=1)^oo sum_(n=1)^oo 1/(m^2 n^2) = sum_(m=1)^oo sum_(n=m+1)^oo 1/(m^2 n^2) + sum_(n=1)^oo 1/(n^2 n^2) + sum_(n=1)^oo sum_(m=n+1)^oo 1/(m^2 n^2) . $
+
+Therefore, we have
+
+$ sum_(m=1)^oo sum_(n=1)^oo 1/(m^2 n^2) =  pi^4/120 + pi^4/36 + pi^4/120 = 3pi^4/360 + 10pi^4/360 + 3pi^4/360 = 4pi^4/90. $
+
+#pagebreak()
 
 = Conclusion <sec:conclusion>
 
