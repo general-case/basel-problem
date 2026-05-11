@@ -303,23 +303,23 @@ Translating this pattern to the situation in @eq:weierstrass, where the coeffici
 we need the product of every possible pair of square terms, where the order does not matter and there are no repeats.
 To get the sum of products of every possible pair of square terms, we'll need two indexes, say $m$ and $n$:
 
-$ sum_(m=1)^oo sum_(n=m+1)^oo 1/(m^2 pi^2) x^2 1/(n^2 pi^2) x^2 $ <exp:sum_of_products>
+$ sum_(m=1)^oo sum_(n=m+1)^oo 1/(m^2 pi^2) x^2 1/(n^2 pi^2) x^2 $ <exp:sum_of_reciprocal_products>
 
 Here, for each $m$ we run through every $n$ that is greater than $m$.
 Another option would be to run through every $n$ less than $m$, but in that case we would have to start $m$ at 2.
 Ultimately, it doesn't matter which indexing scheme we choose as long as $m != n$ and that either $m < n$ or $m > n$, but not both.
-Rewriting @exp:sum_of_products[expression], we get:
+Rewriting @exp:sum_of_reciprocal_products[expression], we get:
 
-$ x^4/pi^4 sum_(m=1)^oo sum_(n=m+1)^oo 1/(m^2 n^2) $ <exp:sum_of_products_final>
+$ x^4/pi^4 sum_(m=1)^oo sum_(n=m+1)^oo 1/(m^2 n^2) $ <exp:sum_of_reciprocal_products_final>
 
 Recalling the Maclaurin series in @eq:maclaurin_series_for_sin_over_x:
 
 #restate(<eq:maclaurin_series_for_sin_over_x>)
 
 We can equate the coefficient of the $x^4$ term on the right-hand side of @eq:maclaurin_series_for_sin_over_x with the coefficient
-of $x^4$ in @exp:sum_of_products_final[expression] to get:
+of $x^4$ in @exp:sum_of_reciprocal_products_final[expression] to get.
 
-$ 1/pi^4 sum_(m=1)^oo sum_(n=m+1)^oo 1/(m^2 n^2) = 1/5! $
+$ 1/pi^4 sum_(m=1)^oo sum_(n=m+1)^oo 1/(m^2 n^2) = 1/5! . $
 
 Rewriting leads to the following statement which completes the proof.
 
@@ -327,11 +327,40 @@ $ sum_(m=1)^oo sum_(n=m+1)^oo 1/(m^2 n^2) = pi^4/5! $
 
 #pagebreak()
 
-Needs work!
-Armed with the previous result, we can prove a related result in a straightforward manner.
-The following figure depicts the series
+Armed with the previous results, we can prove a related theorem in a straightforward manner.
 
-$ sum_(m=1)^oo sum_(n=1)^oo 1/(m^2 n^2) . $
+#theorem(title: "Sum of the 4-series")[$ sum_(n=1)^oo 1/(n^4) = pi^4/90 $] <thm:sum_of_4-series>
+
+== Proof
+
+We begin by using the Basel sum to evaluate the double sum
+
+$ sum_(m=1)^oo sum_(n=1)^oo 1/(m^2 n^2) , $ <exp:double_sum_reciprocal_product_squares>
+
+which is the sum of all reciprocals of the product of two squares of a natural number greater than zero.
+Note that this double sum is different from the one in @thm:basel_variant[theorem] because here the indexes are _unrestricted_, that is $n$ does not depend on $m$.
+
+Clearly, we can rewrite the double sum as
+
+$ sum_(m=1)^oo sum_(n=1)^oo 1/m^2 1/n^2 . $
+
+And, since the $1/m^2$ term is not captured by the $n$ index of the inner sum, we can move it outside the inner sum to get
+
+$ sum_(m=1)^oo (1/m^2 sum_(n=1)^oo 1/n^2) . $
+
+Now in @thm:basel_problem[theorem], the Basel problem theorem, we showed that the Basel sum, $sum_(n=1)^oo 1/n^2$, converges to $pi^2/6$,
+so it is effectively just a constant multiplying each $1/m^2$ term, and thus by the distributive property, we can move it outside the outer sum to get
+
+$ sum_(n=1)^oo 1/n^2 dot sum_(m=1)^oo 1/m^2 . $
+
+In fact, this is a general result, so that we can always rewrite the double sum of a product as the product of a sum, provided that the two series are convergent.
+Finally, since we know that both series in the product evaluate to $pi^2/6$, we have
+
+$ sum_(m=1)^oo sum_(n=1)^oo 1/(m^2 n^2) = pi^4/36 . $ <eq:double_sum_reciprocal_product_squares>
+
+#pagebreak()
+
+@fig:reciprocal-product-of-squares depicts the terms of @exp:double_sum_reciprocal_product_squares[series] arranged in a grid.
 
 // Define the function that renders the content for each (i,j) cell.
 #let reciprocal-product-of-squares(i, j) = $ 1/(#i^2 #j^2) $
@@ -349,26 +378,24 @@ $ sum_(m=1)^oo sum_(n=1)^oo 1/(m^2 n^2) . $
 
 #figure(number-array, caption: [Sum of reciprocal product squares]) <fig:reciprocal-product-of-squares>
 
-Observe that the sum of the terms in upper triangle, highlighted in yellow, is the sum of @thm:basel_variant[theorem],
-and by symmetry the sum of the terms in the lower triangle, highlighted in green, has the the same value, i.e. $pi^4/5!$.
+Observe that the sum of the terms in upper triangle, highlighted in yellow, is the sum of @thm:basel_variant[theorem], that is $pi^4/120$,
+and by symmetry the sum of the terms in the lower triangle, highlighted in green, has the the same value, also $pi^4/120$.
+
 The terms along the major diagonal, highlighted in pink, satisfy $m=n$.
 Thus the sum of the terms along the major diagonal is
 
-$ sum_(n=1)^oo 1/(n^2 n^2) , $
+$ sum_(n=1)^oo 1/(n^2 n^2) = sum_(n=1)^oo 1/n^4  , $
 
-which can be rewritten as
+which is the series we are looking to evaluate.
 
-$ sum_(n=1)^oo 1/(n^2) sum_(n=1)^oo 1/(n^2) . $
+To compute the sum of the terms along the major diagonal we can subtract the sums of the upper and lower triangles, each $pi^4/120$,
+from the sum of all terms in the table, which we already showed in @eq:double_sum_reciprocal_product_squares is equal to $pi^4/36$.
 
-From @thm:basel_problem[theorem], we conclude the sum of the terms along the major diagonal is $pi^2/6 dot pi^2/6 = pi^4/36$.
+Thus we have
 
-Adding the sums of the terms from the three regions depicted in @fig:reciprocal-product-of-squares we have
+$ sum_(n=1)^oo 1/n^4 =  pi^4/36 - 2pi^4/120 = 10pi^4/360 - 6pi^4/360 = 4pi^4/360 = pi^4/90 , $
 
-$ sum_(m=1)^oo sum_(n=1)^oo 1/(m^2 n^2) = sum_(m=1)^oo sum_(n=m+1)^oo 1/(m^2 n^2) + sum_(n=1)^oo 1/(n^2 n^2) + sum_(n=1)^oo sum_(m=n+1)^oo 1/(m^2 n^2) . $
-
-Therefore, we have
-
-$ sum_(m=1)^oo sum_(n=1)^oo 1/(m^2 n^2) =  pi^4/120 + pi^4/36 + pi^4/120 = 3pi^4/360 + 10pi^4/360 + 3pi^4/360 = 4pi^4/90. $
+which concludes the proof.
 
 #pagebreak()
 
