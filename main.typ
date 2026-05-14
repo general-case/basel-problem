@@ -145,7 +145,7 @@ However, the constant is still part of the factorization; it just has to be dete
 
 Since the Maclaurin series for sine is a power series, essentially an _infinite polynomial_, Euler reasoned that it could be
 expressed as the product of a constant and infinitely many linear factors.
-This step was initially thought to be unjustified, but was later confirmed to be sound with the appearance Weierstrass's factorization theorem.\
+This step, although initially controversial, was later justified with the publication of Weierstrass's factorization theorem in 1876.
 
 Since $sin x$ is zero _only_ at $x=0, plus.minus pi, plus.minus 2pi, plus.minus 3pi, dots$, these values are the roots of the Maclaurin series.
 Note that since the roots have the form $plus.minus k pi$ for all $k in NN$ and are thus all real,
@@ -155,6 +155,8 @@ $ sin x = c (x-0)(x-pi)(x+pi)(x-2pi)(x+2pi)(x-3pi)(x+3pi) dots.c $
 $ sin x = c x(x-pi)(x+pi)(x-2pi)(x+2pi)(x-3pi)(x+3pi) dots.c $
 $ (sin x)/x = c (x-pi)(x+pi)(x-2pi)(x+2pi)(x-3pi)(x+3pi) dots.c $
 $ (sin x)/x = c (x^2 - pi^2)(x^2 - 4pi^2)(x^2 - 9pi^2 ) dots.c wide "Difference of squares" $ <eq:diff_of_squares>
+
+It is the zeros of the sine function that explain why $pi$ appears in the value of the Basel sum.
 
 #pagebreak()
 
@@ -258,7 +260,7 @@ $ sum_(n=1)^oo 1/n^2 = pi^2/3! . $
 
 This completes the proof.
 
-= Using Euler's method to prove a related theorems <sec:similar_theorem>
+= Using Euler's method to prove a related theorem <sec:similar_theorem>
 
 It is instructive to consider Euler's method applied to the $x^4$ terms of the
 Maclaurin series and the Weierstrass factorization of the sine function
@@ -266,7 +268,7 @@ in order to prove the following theorem.
 
 #theorem(title: "Basel variant")[$ sum_(m=1)^oo sum_(n=m+1)^oo 1/(m^2n^2) = pi^4/120 $] <thm:basel_variant>
 
-The proof offers a glimpse of how Euler's method may be generalized to compute the values of sums that are similar to $sum_(n=1)^oo 1/n^2$.
+The proof offers a glimpse of how Euler's method may be generalized to compute the values of sums that are similar to Basel sum.
 
 == Proof
 
@@ -315,12 +317,12 @@ Rewriting @exp:sum_of_reciprocal_products[expression], we get
 
 $ x^4/pi^4 sum_(m=1)^oo sum_(n=m+1)^oo 1/(m^2 n^2) . $ <exp:sum_of_reciprocal_products_final>
 
-Recalling that the Maclaurin series from @eq:maclaurin_series_for_sin_over_x was
+Recalling @eq:maclaurin_series_for_sin_over_x we have
 
 #restate(<eq:maclaurin_series_for_sin_over_x>)
 
-We can equate the coefficient of the $x^4$ term on the right-hand side of @eq:maclaurin_series_for_sin_over_x with the coefficient
-of $x^4$ in @exp:sum_of_reciprocal_products_final[expression] to get.
+We can equate the coefficient of the $x^4$ term in the Maclaurin series on the right-hand side of @eq:maclaurin_series_for_sin_over_x
+with the coefficient of the $x^4$ term in @exp:sum_of_reciprocal_products_final[expression] to get
 
 $ 1/pi^4 sum_(m=1)^oo sum_(n=m+1)^oo 1/(m^2 n^2) = 1/5! . $
 
@@ -330,7 +332,9 @@ $ sum_(m=1)^oo sum_(n=m+1)^oo 1/(m^2 n^2) = pi^4/5! $
 
 #pagebreak()
 
-Armed with the previous results, we can prove a related theorem in a straightforward manner.
+= Evaluating the 4-series
+
+Armed with the previous results, we can easily evaluate the 4-series.
 
 #theorem(title: "Sum of the 4-series")[$ sum_(n=1)^oo 1/(n^4) = pi^4/90 $] <thm:sum_of_4-series>
 
@@ -357,6 +361,7 @@ so it is effectively just a constant multiplying each $1/m^2$ term, and thus by 
 $ sum_(n=1)^oo 1/n^2 dot sum_(m=1)^oo 1/m^2 . $
 
 In fact, this is a general result, so that we can always rewrite the double sum of a product as the product of a sum, provided that the two series are convergent.
+
 Finally, since we know that both series in the product evaluate to $pi^2/6$, we have
 
 $ sum_(m=1)^oo sum_(n=1)^oo 1/(m^2 n^2) = pi^4/36 . $ <eq:double_sum_reciprocal_product_squares>
@@ -410,5 +415,5 @@ The Maclaurin series representation of sine was well known at the time of Euler'
 However, in order to establish the second representation of $(sin x)/x$, Euler assumed that sine could be represented
 as an infinite product.
 His assumption anticipated Weierstrass's factorization theorem published in 1876 in a work on the theory of analytic functions.
-As noted in the introduction, Euler's method is an important starting point for understanding p-series in general,
-and in particular can be used to compute the values of all p-series where p is non-zero even natural number.
+As noted in the introduction, Euler's method was an important step towards understanding p-series in general,
+and in particular may be used to compute the values of all p-series where p is non-zero even natural number.
