@@ -151,10 +151,12 @@ Since $sin x$ is zero _only_ at $x=0, plus.minus pi, plus.minus 2pi, plus.minus 
 Note that since the roots have the form $plus.minus k pi$ for all $k in NN$ and are thus all real,
 the series can be expressed as the product of a constant $c$ and real linear factors of the form $(x plus.minus k pi)$.
 
+Thus, we have
+
 $ sin x = c (x-0)(x-pi)(x+pi)(x-2pi)(x+2pi)(x-3pi)(x+3pi) dots.c $
 $ sin x = c x(x-pi)(x+pi)(x-2pi)(x+2pi)(x-3pi)(x+3pi) dots.c $
 $ (sin x)/x = c (x-pi)(x+pi)(x-2pi)(x+2pi)(x-3pi)(x+3pi) dots.c $
-$ (sin x)/x = c (x^2 - pi^2)(x^2 - 4pi^2)(x^2 - 9pi^2 ) dots.c wide "Difference of squares" $ <eq:diff_of_squares>
+$ (sin x)/x = c (x^2 - pi^2)(x^2 - 4pi^2)(x^2 - 9pi^2 ) dots.c wide "(difference of squares)." $ <eq:diff_of_squares>
 
 It is the zeros of the sine function that explain why $pi$ appears in the value of the Basel sum.
 
@@ -162,9 +164,9 @@ It is the zeros of the sine function that explain why $pi$ appears in the value 
 
 The next step is to determine the value of the constant $c$.\
 Now, $(sin x)/x$ is undefined at $x=0$, but since it is also an indeterminate form (i.e., $0/0$),
-we can at least take the limit of both sides as x goes to zero.
+we can at least take the limit of both sides as x goes to zero, so that we get
 
-$ lim_(x->0) (sin x)/x = lim_(x->0) c (x^2 - pi^2)(x^2 - 4pi^2)(x^2 - 9pi^2 ) dots.c $
+$ lim_(x->0) (sin x)/x = lim_(x->0) c (x^2 - pi^2)(x^2 - 4pi^2)(x^2 - 9pi^2 ) dots.c . $
 
 The limit of the left side is simply 1, i.e., $lim_(x->0) (sin x)/x = 1$,
 which can be verified through a simple application of L'Hospital's rule.
