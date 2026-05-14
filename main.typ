@@ -71,9 +71,9 @@ Functions like table and grid take data as a sequence of positional arguments ra
 = Abstract <sec:abstract>
 
 We present a detailed account of Euler's solution to the Basel problem,
-a classical question about the infinite sum of reciprocal squares.
+a classical question in mathematics about the infinite sum of reciprocal squares.
 The key idea is to study a function that can be expressed in two different ways and to compare these representations to uncover information about the series.
-We present Euler's argument in detail and conclude by applying the same technique to a related problems,
+We present Euler's argument in detail and conclude by applying the same technique to related problems,
 demonstrating how the Euler's method can be applied in various settings.
 
 #pagebreak()
@@ -134,7 +134,8 @@ The sine function is defined analytically as a Maclaurin series.
 
 $ sin x = x - x^3/3! + x^5/5! - x^7/7! + dots.c $ <eq:maclaurin_series_for_sin>
 
-A polynomial function can be expressed as the product of a constant, a finite number of real linear factors, and a finite number of irreducible real quadratics.
+A polynomial function #footnote[Polynomial expressions are finite sums by definition.]
+can be expressed as the product of a constant, a finite number of real linear factors, and a finite number of irreducible real quadratics.
 The irreducible real quadratics appear only when the polynomial has one or more non-real, complex roots.
 If the polynomial has all real roots, then it can be expressed solely as the product of a constant and a finite number real linear factors. \
 For example, the polynomial function $f(x) = 2x^2 - 14x + 24$, which has real roots 3 and 4, may be expressed as $f(x) = 2(x-3)(x-4)$.
@@ -205,7 +206,7 @@ x^2/pi^2(1/1 + 1/4 + 1/9 + dots.c) +
 x^4/pi^4(1/4 + 1/9 + 1/36 + dots.c) -
 x^6/pi^6(1/36 + dots.c) +
 dots.c .
-$
+$ <exp:foil_infinite>
 
 We'll set $S_2, S_4, "and" S_6$ equal to the sums in the $x^2, x^4, "and" x^6$ terms respectively.\
 We'll set $C_2, C_4, "and" C_6$ equal to the coefficients of the $x^2, x^4, "and" x^6$ terms respectively,\
@@ -216,9 +217,9 @@ The $S_2$ factor of the $C_2$ coefficient is the sum of reciprocal squares that 
 $ S_2 = sum_(n=1)^oo 1/n^2 $
 
 The $S_4$ and $S_6$ sums are more complicated, involving double and triple sums respectively,
-but since we're only interested in the $S_2$ sum, we won't need these.
+but since we're only interested in the $S_2$ sum, we won't need $S_4$ and $S_6$.
 
-Rewriting the full expression using the coefficients $C_2, C_4, "and" C_6$ defined earlier, we get
+Rewriting the @exp:foil_infinite[expression] using the coefficients $C_2, C_4, "and" C_6$ defined earlier, we get
 
 $
 1 -
