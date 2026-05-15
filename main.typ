@@ -421,3 +421,5 @@ as an infinite product.
 His assumption anticipated Weierstrass's factorization theorem published in 1876 in a work on the theory of analytic functions.
 As noted in the introduction, Euler's method was an important step towards understanding p-series in general,
 and in particular may be used to compute the values of all p-series where p is non-zero even natural number.
+Although there are many tests that decide whether a series converges or diverges, calculating the value of a series is frequently
+challenging, so the fact that Euler's method serves as a tool for computing the value of many p-series and related series makes it a significant contribution to mathematics.
