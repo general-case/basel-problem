@@ -1,5 +1,8 @@
 // Set document properties.
 #set page(paper: "us-letter")
+#set text(size: 12pt) // Larger font.
+#set text(hyphenate: false) // Prevent all automatic line breaks.
+#show "p-series": it => box(it) // Prohibit line breaks in this term.
 #set heading(numbering: "1.")
 #set math.equation(numbering: "(1)", supplement: [equation]) // Default reference is "equation".
 
@@ -151,7 +154,10 @@ This step, although initially controversial, was later justified with the public
 
 Since $sin x$ is zero _only_ at $x=0, plus.minus pi, plus.minus 2pi, plus.minus 3pi, dots$, these values are the roots of the Maclaurin series.
 Note that since the roots have the form $plus.minus k pi$ for all $k in NN$ and are thus all real,
-the series can be expressed as the product of a constant $c$ and real linear factors of the form $(x plus.minus k pi)$.
+the series can be expressed as the product of a constant $c$ and real linear factors of \
+the form $(x plus.minus k pi)$.
+
+#pagebreak()
 
 Thus, we have
 
@@ -161,8 +167,6 @@ $ (sin x)/x = c (x-pi)(x+pi)(x-2pi)(x+2pi)(x-3pi)(x+3pi) dots.c $
 $ (sin x)/x = c (x^2 - pi^2)(x^2 - 4pi^2)(x^2 - 9pi^2 ) dots.c wide "(difference of squares)." $ <eq:diff_of_squares>
 
 It is the zeros of the sine function that explain why $pi$ appears in the value of the Basel sum.
-
-#pagebreak()
 
 The next step is to determine the value of the constant $c$.\
 Now, $(sin x)/x$ is undefined at $x=0$, but since it is also an indeterminate form (i.e., $0/0$),
@@ -187,6 +191,8 @@ As a brief aside, we should note that @eq:weierstrass is equivalent to Weierstra
 
 $ sin x = x product_(n=1)^oo [1-x^2/(n^2 pi^2)] wide "Weierstrass factorization" $
 
+#pagebreak()
+
 Indeed, we could have used Weierstrass as our starting point for the proof.
 However, since we are following Euler's development of the argument, we chose to begin with the Maclaurin series.
 
@@ -195,8 +201,6 @@ If we progressively FOIL a number of factors of the infinite product on the righ
 $ (1-x^2/(pi^2)) (1-x^2/(4pi^2)) (1-x^2/(9pi^2)) $ <exp:foil_1>
 $ (1-x^2/(pi^2) - x^2/(4pi^2) + x^4/(4pi^4)) (1-x^2/(9pi^2)) $ <exp:foil_2>
 $ (1-x^2/(pi^2) - x^2/(4pi^2) + x^4/(4pi^4) - x^2/(9pi^2) + x^4/(9pi^4) + x^4/(36pi^4) - x^6/(36pi^6)) . $ <exp:foil_3>
-
-#pagebreak()
 
 Regrouping @exp:foil_3[expression] so that the matching terms are adjacent, we get
 
@@ -224,6 +228,8 @@ $ S_2 = sum_(n=1)^oo 1/n^2 . $
 
 The $S_4$ and $S_6$ sums are more complicated, involving double and triple sums respectively,
 but since we're only interested in the $S_2$ sum, we won't need $S_4$ and $S_6$.
+
+#pagebreak()
 
 Rewriting the @exp:foil_infinite[expression] using the coefficients $C_2, C_4, "and" C_6$ defined earlier, we get
 
@@ -254,8 +260,6 @@ Equating the coefficients of the $x^2$ terms from @eq:sum_of_sums and @eq:maclau
 
 $ C_2 = 1/3! . $
 
-#pagebreak()
-
 Rewriting $C_2$ and $S_2$, we get
 
 $ 1/pi^2 S_2 = 1/3! $
@@ -273,6 +277,8 @@ in order to prove the following theorem.
 #theorem(title: "Basel variant")[$ sum_(m=1)^oo sum_(n=m+1)^oo 1/(m^2n^2) = pi^4/120 $] <thm:basel_variant>
 
 The proof offers a glimpse of how Euler's method may be generalized to compute the values of sums that are similar to Basel sum.
+
+#pagebreak()
 
 == Proof
 
@@ -292,8 +298,6 @@ $
     - d x^2 + a d x^4 + b d x^4 - a b d x^6 + c d x^4 - a c d x^6 - b c d x^6 + a b c d x^8
 $ <exp:initial_expansion>
 
-#pagebreak()
-
 Regrouping the 16 terms of @exp:initial_expansion[expression] we get
 
 $
@@ -311,6 +315,9 @@ That is, they are the products of every possible pair drawn from ${a,b,c,d}$ whe
 Translating this pattern to the situation in @eq:weierstrass, where the coefficients of the $x^2$ terms have the form $1/(k^2pi^2)$,
 we need to sum the products of every possible pair of reciprocal square coefficients,
 such that the order does not matter and there are no repeats.
+
+#pagebreak()
+
 To get the required sum of products, we'll need two indexes, say $m$ and $n$, with appropriate constraints applied so that we have
 
 $ sum_(m=1)^oo sum_(n=m+1)^oo 1/(m^2 pi^2) x^2 1/(n^2 pi^2) x^2 . $ <exp:sum_of_reciprocal_products>
