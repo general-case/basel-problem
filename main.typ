@@ -108,7 +108,7 @@ where $p$ is a positive integer.
 
 These series exhibit a marked change in behavior at $p=1$.
 For the case where $p=1$, the p-series is simply the harmonic series, which diverges, albeit very slowly.
-In contrast, all other p-series, that is where $p>1$, converge.
+In contrast, all other p-series, that is, where $p>1$, converge.
 
 The Basel sum corresponds to the case where $p=2$,
 making it both the largest convergent p-series and the one with the smallest value of $p$.
@@ -164,7 +164,7 @@ It is the zeros of the sine function that explain why $pi$ appears in the value 
 
 The next step is to determine the value of the constant $c$.\
 Now, $(sin x)/x$ is undefined at $x=0$, but since it is also an indeterminate form (i.e., $0/0$),
-we can at least take the limit of both sides as x goes to zero, so that we get
+we can at least take the limit of both sides as $x$ goes to zero, so that we get
 
 $ lim_(x->0) (sin x)/x = lim_(x->0) c (x^2 - pi^2)(x^2 - 4pi^2)(x^2 - 9pi^2 ) dots.c . $
 
@@ -196,11 +196,11 @@ $ (1-x^2/(pi^2) - x^2/(4pi^2) + x^4/(4pi^4) - x^2/(9pi^2) + x^4/(9pi^4) + x^4/(3
 
 #pagebreak()
 
-We can regroup @exp:foil_3[expression] so that the matching terms are adjacent.
+Regrouping @exp:foil_3[expression] so that the matching terms are adjacent, we get
 
 $ 1-x^2/(pi^2) - x^2/(4pi^2) - x^2/(9pi^2) + x^4/(4pi^4) + x^4/(9pi^4) + x^4/(36pi^4) - x^6/(36pi^6) $
 $ 1 - (x^2/(pi^2) + x^2/(4pi^2) + x^2/(9pi^2)) + (x^4/(4pi^4) + x^4/(9pi^4) + x^4/(36pi^4)) - (x^6/(36pi^6)) $
-$ 1 - x^2/pi^2(1/1 + 1/4 + 1/9) + x^4/pi^4(1/4 + 1/9 + 1/36) - x^6/pi^6(1/36) $
+$ 1 - x^2/pi^2(1/1 + 1/4 + 1/9) + x^4/pi^4(1/4 + 1/9 + 1/36) - x^6/pi^6(1/36) . $
 
 Continuing this process indefinitely, we end up with a sum of the form
 
@@ -216,9 +216,9 @@ We'll set $S_2, S_4, "and" S_6$ equal to the sums in the $x^2, x^4, "and" x^6$ t
 We'll set $C_2, C_4, "and" C_6$ equal to the coefficients of the $x^2, x^4, "and" x^6$ terms respectively,\
 such that $C_2 = 1/pi^2 S_2, C_4 = 1/pi^4 S_6, "and" C_6 =  1/pi^6 S_6$.
 
-The $S_2$ factor of the $C_2$ coefficient is the sum of reciprocal squares that we're aiming to compute.
+The $S_2$ factor of the $C_2$ coefficient is the sum of reciprocal squares that we're aiming to compute, that is,
 
-$ S_2 = sum_(n=1)^oo 1/n^2 $
+$ S_2 = sum_(n=1)^oo 1/n^2 . $
 
 The $S_4$ and $S_6$ sums are more complicated, involving double and triple sums respectively,
 but since we're only interested in the $S_2$ sum, we won't need $S_4$ and $S_6$.
@@ -274,7 +274,7 @@ The proof offers a glimpse of how Euler's method may be generalized to compute t
 
 == Proof
 
-We begin by recalling @eq:weierstrass, which as noted earlier is a form of Weierstrass's factorization of sine.
+We begin by recalling @eq:weierstrass, which as noted earlier is a form of Weierstrass's factorization of sine,
 
 #restate(<eq:weierstrass>)
 
@@ -303,12 +303,13 @@ $
 $ <exp:full_expansion>
 
 We note that the coefficients of the $x^4$ terms in the @exp:full_expansion[expression] are the products of every #box([_2-combination_])
-drawn from the set of coefficients ${a,b,c,d}$.
-That is, they are the products of every possible pair where the order does not matter and there are no repeats.
+drawn from the set of coefficients of the $x^2$ terms, ${a,b,c,d}$.
+That is, they are the products of every possible pair drawn from ${a,b,c,d}$ where the order does not matter and there are no repeats.
 
 Translating this pattern to the situation in @eq:weierstrass, where the coefficients of the $x^2$ terms have the form $1/(k^2pi^2)$,
-we need the product of every possible pair of square terms, where the order does not matter and there are no repeats.
-To get the sum of products of every possible pair of square terms, we'll need two indexes, say $m$ and $n$, so that we can write
+we need to sum the products of every possible pair of reciprocal square coefficients,
+such that the order does not matter and there are no repeats.
+To get the required sum of products, we'll need two indexes, say $m$ and $n$, with appropriate constraints applied so that we have
 
 $ sum_(m=1)^oo sum_(n=m+1)^oo 1/(m^2 pi^2) x^2 1/(n^2 pi^2) x^2 . $ <exp:sum_of_reciprocal_products>
 
@@ -319,7 +320,7 @@ Rewriting @exp:sum_of_reciprocal_products[expression], we get
 
 $ x^4/pi^4 sum_(m=1)^oo sum_(n=m+1)^oo 1/(m^2 n^2) . $ <exp:sum_of_reciprocal_products_final>
 
-Recalling @eq:maclaurin_series_for_sin_over_x we have
+Recalling @eq:maclaurin_series_for_sin_over_x, we have
 
 #restate(<eq:maclaurin_series_for_sin_over_x>)
 
@@ -347,7 +348,8 @@ We begin by using the Basel sum to evaluate the double sum
 $ sum_(m=1)^oo sum_(n=1)^oo 1/(m^2 n^2) , $ <exp:double_sum_reciprocal_product_squares>
 
 which is the sum of all reciprocals of the product of two squares of a natural number greater than zero.
-Note that this double sum is different from the one in @thm:basel_variant[theorem] because here the indexes are _unrestricted_, that is $n$ does not depend on $m$.
+Note that this double sum is different from the one in @thm:basel_variant[theorem] because here the indexes are _unrestricted_,
+that is, $n$ does not depend on $m$.
 
 Clearly, we can rewrite the double sum as
 
@@ -388,7 +390,7 @@ $ sum_(m=1)^oo sum_(n=1)^oo 1/(m^2 n^2) = pi^4/36 . $ <eq:double_sum_reciprocal_
 
 #figure(number-array, caption: [Sum of reciprocal product squares]) <fig:reciprocal-product-of-squares>
 
-Observe that the sum of the terms in upper triangle, highlighted in yellow, is the sum of @thm:basel_variant[theorem], that is $pi^4/120$,
+Observe that the sum of the terms in upper triangle, highlighted in yellow, is the sum of @thm:basel_variant[theorem], that is, $pi^4/120$,
 and by symmetry the sum of the terms in the lower triangle, highlighted in green, has the the same value, also $pi^4/120$.
 
 The terms along the major diagonal, highlighted in pink, satisfy $m=n$.
