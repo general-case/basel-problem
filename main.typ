@@ -78,9 +78,11 @@ demonstrating how the Euler's method can be applied in various settings.
 
 #pagebreak()
 
+// Start page numbering on page 2.
+#set page(numbering: "1")
+
 // Contents if I need it later.
 // #outline()
-
 
 = Introduction <sec:introduction>
 
