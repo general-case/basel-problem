@@ -139,12 +139,12 @@ The sine function is defined analytically by the Maclaurin series
 
 $ sin x = x - x^3/3! + x^5/5! - x^7/7! + dots.c . $ <eq:maclaurin_series_for_sin>
 
-Maclaurin series are a special kind of power series.
-Moreover, because polynomial functions, which have a finite number of terms by definition, may be thought of as _finite power series_,
-Euler reasoned that the Maclaurin series for sine could be treated just like a polynomial function
-and factorized into product of a constant and infinitely many linear factors.
-This idea, although considered controversial at the time,
-was later justified with the publication of Weierstrass's factorization theorem in 1876.
+Maclaurin series are a special type of power series.
+Since polynomial functions — which, by definition, contain only finitely many terms — can also be viewed as finite power series,
+Euler reasoned that the Maclaurin series for the sine function could be manipulated in much the same way as a polynomial.
+In particular, he treated it as though it could be factorized into a constant multiplied by infinitely many linear factors.
+Although this approach was controversial at the time, it was later placed on a firm mathematical foundation
+with the publication of Karl Weierstrass’s factorization theorem in 1876.
 
 Polynomial functions may be re-expressed via factorization
 as the product of a constant, a finite number of real linear factors, and a finite number of irreducible real quadratics.
@@ -152,13 +152,13 @@ The irreducible real quadratics appear only when the polynomial function has one
 If the polynomial has all real zeros, then it can be expressed solely as the product of a constant and a finite number real linear factors. \
 For example, the polynomial function $f(x) = 2x^2 - 14x + 24$, which has real zeros 3 and 4, may be expressed as $f(x) = 2(x-3)(x-4)$.
 In the polynomial case, the constant is simply the leading coefficient, i.e., the coefficient of the highest degree term.
-In the case of a power series however, since there are infinitely many terms, there is no _highest degree term_ and thus no leading coefficient.
+In the case of power series however, since there are infinitely many terms, there is no _highest degree term_ and thus no leading coefficient.
 The constant is still part of the factorization of the power series; it's just that we can't determine it by looking at the highest
 degree term and we need to use a different technique to extract it, as we'll see later in the argument.
 
 Since $sin x$ is zero _only_ at $x=0, plus.minus pi, plus.minus 2pi, plus.minus 3pi, dots$, these values are the zeros of the Maclaurin series.
 Note that since the zeros have the form $plus.minus k pi$ for all $k in NN$ and are thus all real,
-the series can be expressed as the product of a constant $c$ and real linear factors of \
+the series can be expressed as the product of a constant $c$ and infinitely many real linear factors of \
 the form $(x plus.minus k pi)$.
 It is these zeros that explain why $pi$ appears in the value of the Basel sum.
 
