@@ -77,7 +77,7 @@ We present a detailed account of Euler's solution to the Basel problem,
 a classical question in mathematics about the infinite sum of reciprocal squares.
 The key idea is to study a function that can be expressed in two different ways and to compare these representations to uncover information about the series.
 We present Euler's argument in detail and conclude by applying the same technique to related problems,
-demonstrating how the Euler's method can be applied in various settings.
+demonstrating how the Euler's method can be applied in a variety of settings.
 
 #pagebreak()
 
@@ -94,13 +94,13 @@ asks for the value of the infinite series
 
 $ sum_(n=1)^oo 1/n^2 . $ <exp:sum_of_reciprocal_squares>
 
-Despite its apparent simplicity, the problem proved resistant to solution for more than eighty years
+Despite its apparent simplicity, the problem remained unsolved for more than eighty years
 and stood as a significant challenge to mathematicians of the period.
 In _De summis serierum reciprocarum_ (1734), Euler showed that
 
 $ sum_(n=1)^oo 1/n^2 = pi^2/6, $
 
-a result that is both elegant and unexpected, in particular because the value involves $pi$.
+a result that is both elegant and unexpected, in particular because the value of the sum involves $pi$.
 The proof of this theorem in @sec:solution will reveal why $pi$ occurs in the result.
 
 For convenience, we will refer to @exp:sum_of_reciprocal_squares[expression] as the _Basel sum_.
@@ -135,27 +135,32 @@ Euler solved the Basel problem by proving the following theorem.
 
 == Proof
 
-The sine function is defined analytically as a Maclaurin series.
+The sine function is defined analytically by the Maclaurin series
 
-$ sin x = x - x^3/3! + x^5/5! - x^7/7! + dots.c $ <eq:maclaurin_series_for_sin>
+$ sin x = x - x^3/3! + x^5/5! - x^7/7! + dots.c . $ <eq:maclaurin_series_for_sin>
 
-A polynomial function #footnote[Polynomial expressions are finite sums by definition.]
-can be expressed as the product of a constant, a finite number of real linear factors, and a finite number of irreducible real quadratics.
-The irreducible real quadratics appear only when the polynomial has one or more non-real, complex roots.
-If the polynomial has all real roots, then it can be expressed solely as the product of a constant and a finite number real linear factors. \
-For example, the polynomial function $f(x) = 2x^2 - 14x + 24$, which has real roots 3 and 4, may be expressed as $f(x) = 2(x-3)(x-4)$.
+Maclaurin series are a special kind of power series.
+Moreover, because polynomial functions, which have a finite number of terms by definition, may be thought of as _finite power series_,
+Euler reasoned that the Maclaurin series for sine could be treated just like a polynomial function
+and factorized into product of a constant and infinitely many linear factors.
+This idea, although considered controversial at the time,
+was later justified with the publication of Weierstrass's factorization theorem in 1876.
+
+Polynomial functions may be re-expressed via factorization
+as the product of a constant, a finite number of real linear factors, and a finite number of irreducible real quadratics.
+The irreducible real quadratics appear only when the polynomial function has one or more non-real, complex zeros.
+If the polynomial has all real zeros, then it can be expressed solely as the product of a constant and a finite number real linear factors. \
+For example, the polynomial function $f(x) = 2x^2 - 14x + 24$, which has real zeros 3 and 4, may be expressed as $f(x) = 2(x-3)(x-4)$.
 In the polynomial case, the constant is simply the leading coefficient, i.e., the coefficient of the highest degree term.
-In the case of a power series, since there are infinitely many terms, there is no highest degree term and thus no leading coefficient.
-However, the constant is still part of the factorization; it just has to be determined independently.
+In the case of a power series however, since there are infinitely many terms, there is no _highest degree term_ and thus no leading coefficient.
+The constant is still part of the factorization of the power series; it's just that we can't determine it by looking at the highest
+degree term and we need to use a different technique to extract it, as we'll see later in the argument.
 
-Since the Maclaurin series for sine is a power series, essentially an _infinite polynomial_, Euler reasoned that it could be
-expressed as the product of a constant and infinitely many linear factors.
-This step, although initially controversial, was later justified with the publication of Weierstrass's factorization theorem in 1876.
-
-Since $sin x$ is zero _only_ at $x=0, plus.minus pi, plus.minus 2pi, plus.minus 3pi, dots$, these values are the roots of the Maclaurin series.
-Note that since the roots have the form $plus.minus k pi$ for all $k in NN$ and are thus all real,
+Since $sin x$ is zero _only_ at $x=0, plus.minus pi, plus.minus 2pi, plus.minus 3pi, dots$, these values are the zeros of the Maclaurin series.
+Note that since the zeros have the form $plus.minus k pi$ for all $k in NN$ and are thus all real,
 the series can be expressed as the product of a constant $c$ and real linear factors of \
 the form $(x plus.minus k pi)$.
+It is these zeros that explain why $pi$ appears in the value of the Basel sum.
 
 #pagebreak()
 
@@ -164,9 +169,9 @@ Thus, we have
 $ sin x = c (x-0)(x-pi)(x+pi)(x-2pi)(x+2pi)(x-3pi)(x+3pi) dots.c $
 $ sin x = c x(x-pi)(x+pi)(x-2pi)(x+2pi)(x-3pi)(x+3pi) dots.c $
 $ (sin x)/x = c (x-pi)(x+pi)(x-2pi)(x+2pi)(x-3pi)(x+3pi) dots.c $
-$ (sin x)/x = c (x^2 - pi^2)(x^2 - 4pi^2)(x^2 - 9pi^2 ) dots.c wide "(difference of squares)." $ <eq:diff_of_squares>
+$ (sin x)/x = c (x^2 - pi^2)(x^2 - 4pi^2)(x^2 - 9pi^2 ) dots.c wide "(difference of squares)," $ <eq:diff_of_squares>
 
-It is the zeros of the sine function that explain why $pi$ appears in the value of the Basel sum.
+for some constant $c$.
 
 The next step is to determine the value of the constant $c$.\
 Now, $(sin x)/x$ is undefined at $x=0$, but since it is also an indeterminate form (i.e., $0/0$),
@@ -194,7 +199,7 @@ $ sin x = x product_(n=1)^oo [1-x^2/(n^2 pi^2)] wide "Weierstrass factorization"
 #pagebreak()
 
 Indeed, we could have used Weierstrass as our starting point for the proof.
-However, since we are following Euler's development of the argument, we chose to begin with the Maclaurin series.
+However, since we are following Euler's development of the argument, we chose to begin with the Maclaurin series for sine.
 
 If we progressively FOIL a number of factors of the infinite product on the right-hand side of @eq:weierstrass from left to right we get
 
@@ -222,7 +227,7 @@ We'll set $S_2, S_4, "and" S_6$ equal to the sums in the $x^2, x^4, "and" x^6$ t
 We'll set $C_2, C_4, "and" C_6$ equal to the coefficients of the $x^2, x^4, "and" x^6$ terms respectively,\
 such that $C_2 = 1/pi^2 S_2, C_4 = 1/pi^4 S_6, "and" C_6 =  1/pi^6 S_6$.
 
-The $S_2$ factor of the $C_2$ coefficient is the sum of reciprocal squares that we're aiming to compute, that is,
+The $S_2$ factor of the $C_2$ coefficient is the sum of reciprocal squares that we're aiming to compute, i.e.,
 
 $ S_2 = sum_(n=1)^oo 1/n^2 . $
 
@@ -308,7 +313,7 @@ $
 & + a b c d x^8 & wide binom(4,4) = 1 "term."
 $ <exp:full_expansion>
 
-We note that the coefficients of the $x^4$ terms in the @exp:full_expansion[expression] are the products of every #box([_2-combination_])
+We note that the coefficients of the $x^4$ terms in @exp:full_expansion[expression] are the products of every #box([_2-combination_])
 drawn from the set of coefficients of the $x^2$ terms, ${a,b,c,d}$.
 That is, they are the products of every possible pair drawn from ${a,b,c,d}$ where the order does not matter and there are no repeats.
 
