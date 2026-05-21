@@ -174,8 +174,8 @@ $ (sin x)/x = c (x^2 - pi^2)(x^2 - 4pi^2)(x^2 - 9pi^2 ) dots.c wide "(difference
 for some constant $c$.
 
 The next step is to determine the value of the constant $c$. \
-At $x=0$, $(sin x)/x$ is undefined, but it does at least have the indeterminate form $0/0$,
-so that we are able to take the limit of both sides as $x$ goes to zero.
+At $x=0$, $(sin x)/x = 0/0$, which is undefined, but in the context of limits $0/0$ is an indeterminate form,
+so we are permitted to take the limit of both sides as $x$ goes to zero.
 Taking the limit we get
 
 $ lim_(x->0) (sin x)/x = lim_(x->0) c (x^2 - pi^2)(x^2 - 4pi^2)(x^2 - 9pi^2 ) dots.c . $
