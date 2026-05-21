@@ -173,9 +173,10 @@ $ (sin x)/x = c (x^2 - pi^2)(x^2 - 4pi^2)(x^2 - 9pi^2 ) dots.c wide "(difference
 
 for some constant $c$.
 
-The next step is to determine the value of the constant $c$.\
-Now, $(sin x)/x$ is undefined at $x=0$, but since it is also an indeterminate form (i.e., $0/0$),
-we can at least take the limit of both sides as $x$ goes to zero, so that we get
+The next step is to determine the value of the constant $c$. \
+At $x=0$, $(sin x)/x$ is undefined, but it does at least have the indeterminate form $0/0$,
+so that we are able to take the limit of both sides as $x$ goes to zero.
+Taking the limit we get
 
 $ lim_(x->0) (sin x)/x = lim_(x->0) c (x^2 - pi^2)(x^2 - 4pi^2)(x^2 - 9pi^2 ) dots.c . $
 
@@ -246,7 +247,7 @@ x^6 C_6 +
 dots.c .
 $
 
-This sum is equal to $(sin x)/x$, so we have
+Per @eq:weierstrass, this sum is equal to $(sin x)/x$, so we have
 
 $
 (sin x)/x =
@@ -260,6 +261,8 @@ $ <eq:sum_of_sums>
 Recalling the Maclaurin series for sine from @eq:maclaurin_series_for_sin and dividing both sides by $x$ we get
 
 $ (sin x)/x = 1 - x^2/3! + x^4/5! - x^6/7! + dots.c . $ <eq:maclaurin_series_for_sin_over_x>
+
+Now we have two representations of $(sin x)/x$.
 
 Equating the coefficients of the $x^2$ terms from @eq:sum_of_sums and @eq:maclaurin_series_for_sin_over_x we get
 
@@ -275,7 +278,7 @@ This completes the proof.
 
 = Using Euler's method to prove a related theorem <sec:similar_theorem>
 
-It is instructive to consider Euler's method applied to the $x^4$ terms of the
+It is instructive to look at Euler's method applied to the $x^4$ terms of the
 Maclaurin series and the Weierstrass factorization of the sine function
 in order to prove the following theorem.
 
@@ -427,13 +430,15 @@ which concludes the proof.
 
 = Conclusion <sec:conclusion>
 
-Euler's remarkable insight in solving the Basel problem was to recognize that he could equate the coefficients of like terms
-from two different representations of the $(sin x)/x$ function.
+Euler's remarkable insight in solving the Basel problem was recognizing that the coefficients of like terms could be equated
+from two different representations of the function $(sin x)/x$.
 The Maclaurin series representation of sine was well known at the time of Euler's work.
-However, in order to establish the second representation of $(sin x)/x$, Euler assumed that sine could be represented
+However, to establish a second representation of $(sin x)/x$, Euler assumed that sine could be expressed
 as an infinite product.
-His assumption anticipated Weierstrass's factorization theorem published in 1876 in a work on the theory of analytic functions.
+His assumption anticipated Weierstrass's factorization theorem published in 1876 as part of a work on the theory of analytic functions.
 As noted in the introduction, Euler's method was an important step towards understanding p-series in general,
-and in particular may be used to compute the values of all p-series where p is non-zero even natural number.
-Although there are many tests that decide whether a series converges or diverges, calculating the value of a series is frequently
-challenging, so the fact that Euler's method serves as a tool for computing the value of many p-series and related series makes it a significant contribution to mathematics.
+and in particular can be used to compute the values of all p-series where p is a non-zero even natural number.
+Although many tests exist that determine whether a series converges or diverges,
+explicitly calculating the value of a series is often challenging.
+Euler's method therefore is a significant contribution to mathematics
+because it provides a tool for evaluating a whole class of p-series and related infinite series.
